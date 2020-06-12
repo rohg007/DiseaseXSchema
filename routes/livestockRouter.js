@@ -15,7 +15,7 @@ livestockRouter.route('/')
         res.json(livestocks);
     }, (err) => next(err))
     .catch((err)=>next(err));
-});
+})
 .post((req,res,next)=>{
     Livestocks.create(req.body)
     .then((livestocks)=>{
