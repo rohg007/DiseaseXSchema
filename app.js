@@ -13,6 +13,7 @@ var healthCenterRouter = require('./routes/healthCenterRouter');
 var vaccineRouter = require('./routes/vaccineRouter');
 var animalOwnerRouter = require('./routes/animalOwnerRouter');
 var animalRouter = require('./routes/animalRouter');
+var animalCaseRouter = require('./routes/animalCaseRouter');
 
 var app = express();
 const url = config.mongoUrl;
@@ -40,6 +41,7 @@ app.use('/healthCenters', healthCenterRouter);
 app.use('/vaccines',vaccineRouter);
 app.use('/animalOwners',animalOwnerRouter);
 app.use('/animals', animalRouter);
+app.use('/animalCases', animalCaseRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
