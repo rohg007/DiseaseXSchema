@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var config = require('./config');
-
+var config = require('config');
+var authSignInRouter = require('./routes/authSignIn');
+var SignUpRouter = require('./routes/authSignUp');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var livestockRouter = require('./routes/livestockRouter');
@@ -19,12 +20,15 @@ var humanCaseRouter = require('./routes/humanCaseRouter');
 var outbreakRouter = require('./routes/outbreakRouter');
 
 var app = express();
-const url = config.mongoUrl;
+const url = config.get('mongoUrl');
 try {
-  mongoose.connect( url, {useNewUrlParser: true, useUnifiedTopology: true}, () =>
-  console.log("connected"));    
-  }catch (error) { 
-  console.log("could not connect"+error);    
+  mongoose.connect(
+    url,
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+    () => console.log('connected')
+  );
+} catch (error) {
+  console.log('could not connect' + error);
 }
 
 // view engine setup
@@ -41,21 +45,23 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/livestocks', livestockRouter);
 app.use('/healthCenters', healthCenterRouter);
-app.use('/vaccines',vaccineRouter);
-app.use('/animalOwners',animalOwnerRouter);
+app.use('/vaccines', vaccineRouter);
+app.use('/animalOwners', animalOwnerRouter);
+app.use('/auth', authSignInRouter);
+app.use('/signup', SignUpRouter);
 app.use('/animals', animalRouter);
 app.use('/animalCases', animalCaseRouter);
 app.use('/diseases', diseaseRouter);
-app.use('/humanCases',humanCaseRouter);
-app.use('/outbreaks',outbreakRouter);
+app.use('/humanCases', humanCaseRouter);
+app.use('/outbreaks', outbreakRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
