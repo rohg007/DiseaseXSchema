@@ -28,7 +28,7 @@ animalCaseRouter.route('/')
 .put((req,res,next)=>{
     res.statusCode = 403;
     res.end('PUT operation not supported on /animalCases');
-})
+}) 
 .delete((req,res,next)=>{
     AnimalCases.remove({})
     .then((resp)=>{

@@ -8,7 +8,10 @@
       "latlng": "41.40338, 2.17403",
       "incharge": "Mr.Stephen",
       "pincode": "301023",
-      "web": "udyogvibhag.in"
+      "web": "udyogvibhag.in",
+      "total_affected": "14",
+      "total_recoverd": "16",
+      "total_deaths": "3"
     },
     {
       "address": "Narayan Circle Bihar",
@@ -18,7 +21,10 @@
       "latlng": "41.40334, 2.17402",
       "incharge": "Miss Narayani",
       "pincode": "305001",
-      "web": "surakshakendra.in"
+      "web": "surakshakendra.in",
+      "total_affected": "5",
+      "total_recoverd": "3",
+      "total_deaths": "0"
     },
     {
       "address": "124/67 Malviya Nagar",
@@ -28,7 +34,10 @@
       "latlng": "41.50338, 2.17403",
       "incharge": "Ketan Lal",
       "pincode": "234516",
-      "web": "helpcenter.co.in"
+      "web": "helpcenter.co.in",
+      "total_affected": "8",
+      "total_recoverd": "2",
+      "total_deaths": "3"
     },
     {
       "address": "Adarsh Nagar,Asansole",
@@ -38,7 +47,10 @@
       "latlng": "41.40338, 1.17400",
       "incharge": "Mrs. Shikha Garg",
       "pincode": "908076",
-      "web": "udyognagar.co.in"
+      "web": "udyognagar.co.in",
+      "total_affected": "40",
+      "total_recoverd": "10",
+      "total_deaths": "20"
     },
     {
       "address": "678/28 N/22 Pansheel Nagar,Ajmer",
@@ -48,7 +60,10 @@
       "latlng": "41.40238, 2.10003",
       "incharge": "Mis Deepti SInghal",
       "pincode": "305001",
-      "web": "mahilaseva.in"
+      "web": "mahilaseva.in",
+      "total_affected": "67",
+      "total_recoverd": "12",
+      "total_deaths": "5"
     }
   ]
 }

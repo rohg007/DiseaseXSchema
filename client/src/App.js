@@ -12,6 +12,7 @@ import Human_Case from './components/Human_Case';
 import SignUpPage from './components/SignUpPage';
 import LoginPageHealthCenter from './components/LoginPageHealthCenter';
 import LoginPageAdmin from './components/LoginPageAdmin';
+import Health_center from './components/Health_center';
 
 var sectionStyle = {
   backgroundImage: "url(" + Background + ")",
@@ -34,7 +35,8 @@ function App() {
           <Route path = '/loginPage' component={LoginPageHealthCenter} />
           <Route path = '/loginPageAdmin' component={LoginPageAdmin} />
           <Route path = '/animal_case' component={Animal_Case} />
-        </Switch>
+          <Route path= '/health_center' component={Health_center} />
+               </Switch>
     </Router>  
     </div>
   );  
