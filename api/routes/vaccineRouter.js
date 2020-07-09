@@ -8,7 +8,7 @@ vaccineRouter.use(bodyParser.json());
 
 vaccineRouter.route('/')
 .get((req,res,next) => {
-    Vaccines.find({})
+    Vaccines.find({}) 
     .then((vaccines)=>{
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
