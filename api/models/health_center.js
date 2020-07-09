@@ -8,7 +8,6 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -29,7 +28,6 @@ var healthCenterSchema = new Schema({
   },
   latlng: {
     type: String,
-    required: true,
   },
   incharge: {
     type: String,

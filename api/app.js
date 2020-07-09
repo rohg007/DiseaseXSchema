@@ -18,8 +18,9 @@ var animalCaseRouter = require('./routes/animalCaseRouter');
 var diseaseRouter = require('./routes/diseaseRouter');
 var humanCaseRouter = require('./routes/humanCaseRouter');
 var outbreakRouter = require('./routes/outbreakRouter');
-
+var cors = require('cors');
 var app = express();
+app.use(cors());
 const url = config.get('mongoUrl');
 try {
   mongoose.connect(
