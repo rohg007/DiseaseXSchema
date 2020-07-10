@@ -12,7 +12,6 @@ import {
   Input,
 } from 'reactstrap';
 
-import Search from './Search';
 import editImage from '../images/edit.png';
 const filtereddata = data.animalCaseSchema.filter((temp) => {
   return temp.healthCenter.email === 'suraksha@yahoo.com';
