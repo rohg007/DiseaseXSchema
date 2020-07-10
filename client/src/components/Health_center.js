@@ -43,7 +43,6 @@ const Health_center = () => {
       options={{
         title: {
           display: true,
-
           position: 'top',
           text: `HEALTH CENTER : ${filtereddata[0].name} status`,
           fontSize: '20',
@@ -77,10 +76,10 @@ const Health_center = () => {
           aria-label='First group'
           style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
         >
-          <a class='btn btn-large btn-dark' href='/'>
+          <a class='btn btn-large btn-dark' href='/new_humancase'>
             NEW HUMAN CASE
           </a>
-          <a class='btn btn-large btn-dark' href='/'>
+          <a class='btn btn-large btn-dark' href='/new_animalcase'>
             NEW ANIMAL CASE
           </a>
           <a class='btn btn-large btn-dark' href='/human_case'>

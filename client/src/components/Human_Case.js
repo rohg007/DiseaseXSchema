@@ -85,37 +85,17 @@ class Example2 extends Component {
                           <FormGroup>
                             <div onChange={this.onChangeValue}>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Infected
+                                <input type='radio' /> Infected
                               </div>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Deceased
+                                <input type='radio' /> Deceased
                               </div>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Recovered
+                                <input type='radio' /> Recovered
                               </div>
 
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Delete
+                                <input type='radio' /> Delete Entry
                               </div>
                             </div>
 
