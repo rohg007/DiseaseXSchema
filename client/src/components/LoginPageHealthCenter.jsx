@@ -37,7 +37,6 @@ function LoginPageHealthcenter() {
             overAllError: '',
           }));
           token = response.data.token;
-          console.log(token);
           getLoggedInDetails({
             token: token,
           })

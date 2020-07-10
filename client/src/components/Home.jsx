@@ -2,20 +2,10 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import './cars.css';
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Image,
-  ButtonGroup,
-} from 'reactstrap';
+import { Button } from 'reactstrap';
 import Login from '../images/Login.png';
 
-export default class AppNavbar extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div class='card-deck'>
@@ -62,10 +52,7 @@ export default class AppNavbar extends Component {
             width: '4%',
           }}
         >
-          <div
-            class='card-header'
-            style={{  color: 'black' }}
-          >
+          <div class='card-header' style={{ color: 'black' }}>
             <img
               width='40px'
               src='https://img.icons8.com/ios-filled/100/000000/login-rounded-right.png'

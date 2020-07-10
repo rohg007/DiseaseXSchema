@@ -44,7 +44,6 @@ class Animal_Case extends Component {
   };
 
   render() {
-    console.log(localStorage);
     return (
       <div>
         <table class='table table-striped table-active'>

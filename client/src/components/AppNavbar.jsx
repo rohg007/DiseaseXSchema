@@ -1,43 +1,37 @@
 import React, { Component } from 'react';
+import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../App.css'
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-} from 'reactstrap';
+import '../App.css';
+import { Navbar, NavbarBrand, Container } from 'reactstrap';
 
-export default class AppNavbar extends Component {
-  state = {
-    isOpen: false,
-  };
-
-  toggle = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  };
-  render() {
-    return (
-      <div >
-          <Navbar color='dark' dark expand='lm' className='mb-5'>
-            <Container>
-              <NavbarBrand href='/'>DiseaseX</NavbarBrand>
-              <NavbarToggler onClick={this.toggle} />
-              <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className='ml-auto' navbar>
-                  <NavLink href='/signup'>Register</NavLink>
-                </Nav>
-              </Collapse>
-            </Container>
-          </Navbar>
-          
-      </div>
-    );
-  }
+function AppNavBar() {
+  let history = useHistory();
+  return (
+    <div className='container-fluid p-0'>
+      <Navbar color='dark' dark expand='lm' className='mb-5'>
+        <Container>
+          <NavbarBrand href='/'>DiseaseX</NavbarBrand>
+          {localStorage.user ? (
+            <div
+              onClick={() => {
+                localStorage.removeItem('user');
+                history.replace('/');
+              }}
+              className='ml-auto'
+              style={{
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+              }}
+            >
+              LogOut
+            </div>
+          ) : null}
+        </Container>
+      </Navbar>
+    </div>
+  );
 }
+
+export default AppNavBar;
