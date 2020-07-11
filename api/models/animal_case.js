@@ -11,6 +11,8 @@ var animalOwnerSchema = new Schema({
   },
   email: {
     type: String,
+    index: true,
+    sparse: true,
   },
   contact: {
     type: String,
@@ -43,12 +45,16 @@ var vaccineSchema = new Schema({
     required: true,
   },
   forHuman: {
-    type: Boolean,
+    type: String,
     required: true,
   },
 });
 
 var animalSchema = new Schema({
+  status: {
+    type: String,
+    required: true,
+  },
   livestock: {
     type: livestockSchema,
   },
@@ -108,11 +114,8 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
+    index: true,
+    sparse: true,
   },
 
   avatar: {
@@ -140,6 +143,19 @@ var healthCenterSchema = new Schema({
   web: {
     type: String,
   },
+
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
+  },
 });
 
 var animalCaseSchema = new Schema({
@@ -150,7 +166,7 @@ var animalCaseSchema = new Schema({
     type: healthCenterSchema,
   },
   disease: {
-    diseaseSchema,
+    type: diseaseSchema,
   },
   latlng: {
     type: String,

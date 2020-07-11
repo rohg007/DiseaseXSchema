@@ -1,9 +1,9 @@
-import axios from './axios.jsx';
+import axios from '../axios.jsx';
 
-function getAdminLoggedInDetails({ token }) {
+function getCenterLoggedInDetails({ token }) {
   return new Promise((resolve, reject) => {
     try {
-      const response = axios.get('/auth/admin', {
+      const response = axios.get('/auth/health-center', {
         headers: {
           'x-auth-token': token,
         },
@@ -15,4 +15,4 @@ function getAdminLoggedInDetails({ token }) {
   });
 }
 
-export default getAdminLoggedInDetails;
+export default getCenterLoggedInDetails;

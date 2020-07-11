@@ -15,7 +15,7 @@ var vaccineSchema = new Schema({
     required: true,
   },
   forHuman: {
-    type: Boolean,
+    type: String,
     required: true,
   },
 });
@@ -75,11 +75,6 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
   },
 
   avatar: {
@@ -107,9 +102,26 @@ var healthCenterSchema = new Schema({
   web: {
     type: String,
   },
+
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
+  },
 });
 
 var humanCaseSchema = new Schema({
+  status: {
+    type: String,
+    required: true,
+  },
   patientName: {
     type: String,
     required: true,

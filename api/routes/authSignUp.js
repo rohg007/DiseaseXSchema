@@ -33,6 +33,9 @@ route.post(
       incharge,
       pincode,
       web,
+      total_affected,
+      total_deaths,
+      total_recovered,
     } = req.body;
     try {
       //See if HealthCenter Exists
@@ -60,6 +63,9 @@ route.post(
         pincode,
         incharge,
         web,
+        total_affected,
+        total_deaths,
+        total_recovered,
       });
       //Encrypt Password
       const salt = await bcrypt.genSalt(10);

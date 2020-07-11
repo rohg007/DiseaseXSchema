@@ -1,4 +1,4 @@
-import axios from './axios.jsx';
+import axios from '../axios.jsx';
 
 function login({
   name,

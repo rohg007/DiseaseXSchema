@@ -8,6 +8,8 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
+    index: true,
+    sparse: true,
   },
   password: {
     type: String,
@@ -38,6 +40,18 @@ var healthCenterSchema = new Schema({
   },
   web: {
     type: String,
+  },
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
   },
 });
 

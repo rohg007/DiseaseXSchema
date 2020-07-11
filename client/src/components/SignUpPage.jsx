@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import SignUp from '../api/signUpApi.jsx';
+import SignUp from '../api/auth/signUpApi.jsx';
 import './signup.css';
 
 function SignUpPage() {

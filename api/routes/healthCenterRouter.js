@@ -22,10 +22,10 @@ healthCenterRouter
   })
   .put((req, res, next) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /healthCenters');
+    res.send('PUT operation not supported on /healthCenters');
   })
   .delete((req, res, next) => {
-    HealthCenters.remove({})
+    HealthCenters.deleteOne({})
       .then(
         (resp) => {
           res.statusCode = 200;
@@ -53,7 +53,7 @@ healthCenterRouter
   })
   .post((req, res, next) => {
     res.statusCode = 403;
-    res.end(
+    res.send(
       'POST operation not supported on /healthCenters/' +
         req.params.healthCenterId
     );

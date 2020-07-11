@@ -1,9 +1,9 @@
-import axios from './axios.jsx';
+import axios from '../axios.jsx';
 
-function loginCenter({ email, password }) {
+function loginAdmin({ email, password }) {
   return new Promise((resolve, reject) => {
     try {
-      const response = axios.post('/auth/health-center', {
+      const response = axios.post('/auth/admin', {
         email,
         password,
       });
@@ -14,4 +14,4 @@ function loginCenter({ email, password }) {
   });
 }
 
-export default loginCenter;
+export default loginAdmin;

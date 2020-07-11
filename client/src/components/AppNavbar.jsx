@@ -6,6 +6,7 @@ import { Navbar, NavbarBrand, Container } from 'reactstrap';
 
 function AppNavBar() {
   let history = useHistory();
+  const [logoutoption, setLogoutOption] = React.useState(true);
   return (
     <div className='container-fluid p-0'>
       <Navbar color='dark' dark expand='lm' className='mb-5'>
@@ -15,6 +16,7 @@ function AppNavBar() {
             <div
               onClick={() => {
                 localStorage.removeItem('user');
+                setLogoutOption(!logoutoption);
                 history.replace('/');
               }}
               className='ml-auto'
@@ -27,7 +29,22 @@ function AppNavBar() {
             >
               LogOut
             </div>
-          ) : null}
+          ) : (
+            <div
+              onClick={() => {
+                history.push('/signup');
+              }}
+              className='ml-auto'
+              style={{
+                color: 'white',
+                fontSize: '14px',
+                fontWeight: '500',
+                cursor: 'pointer',
+              }}
+            >
+              Register
+            </div>
+          )}
         </Container>
       </Navbar>
     </div>

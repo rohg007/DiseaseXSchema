@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import data from '../ConstantDB/Animal_Case.json';
+import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
+import createAnimalCase from '../api/animalCase/createAnimalCase.jsx';
+import DeleteAnimalCase from '../api/animalCase/deleteAnimalCase.jsx';
+import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   Button,
@@ -22,7 +26,23 @@ class Animal_Case extends Component {
   state = {
     modal: false,
     name: '',
+    cases: [],
   };
+  componentDidMount() {
+    try {
+      GetAllAnimalCases()
+        .then((response) => {
+          console.log(response);
+          this.setState({ cases: response.data });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log('Server' + err);
+    }
+  }
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -31,19 +51,155 @@ class Animal_Case extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = (e) => {
+  onSubmit = (e, ref) => {
     e.preventDefault();
-    const newIt = {
-      name: this.state.name,
-    };
+    // const newIt = {
+    //   name: this.state.name,
+    // };
 
-    // Add Item via AddItem
-    this.props.addItems(newIt);
-    //close Modal
+    // // Add Item via AddItem
+    // this.props.addItems(newIt);
+    // //close Modal
+    // if (ref === 'post') {
+    //   let animalCase = {
+    //     animal: {
+    //       status: 'Deceased',
+    //       livestock: {
+    //         breed: 'Pig',
+    //         population: 4000000,
+    //       },
+    //       owner: {
+    //         name: 'Michael Faraday',
+    //         address: '8 Pleasant Rd. Glen Burnie',
+    //         email: 'michael@gmail.com',
+    //         contact: '9100020123',
+    //       },
+    //       nextVaccination: '05/10/2020',
+    //       vaccine: {
+    //         name: 'Classical swine fever',
+    //         scientificName: 'Clostridium botulinum Type C & D',
+    //         duration: 1,
+    //         forHuman: 'false',
+    //       },
+    //     },
+    //     disease: {
+    //       name: 'Blackleg',
+    //       scientificName: 'Clostridium chauvoei',
+    //       precautions:
+    //         'moving Lef Should be avoided, Consult Physician, Rich Diet',
+    //       symptoms: 'Dark Leg, Heavy,Painful movement of legs',
+    //       morbidity: 60,
+    //       mortality: 40,
+    //       total_affected: 400000,
+    //       total_deaths: 10000,
+    //       livestock: [
+    //         {
+    //           breed: 'Cattle',
+    //           population: 5000000,
+    //         },
+    //         {
+    //           breed: 'Buffalo',
+    //           population: 6000000,
+    //         },
+    //         {
+    //           breed: 'Sheep',
+    //           population: 8000000,
+    //         },
+    //         {
+    //           breed: 'Goat',
+    //           population: 10000000,
+    //         },
+    //       ],
+    //       vaccine: [
+    //         {
+    //           name: 'Classical swine fever',
+    //           scientificName: 'Clostridium botulinum Type C & D',
+    //           duration: 1,
+    //           forHuman: 'false',
+    //         },
+    //         {
+    //           name: 'Bovine tuberculosis',
+    //           scientificName: 'Clostridium novyi Type B',
+    //           duration: 3,
+    //           forHuman: 'false',
+    //         },
+    //       ],
+    //     },
+    //     healthCenter: {
+    //       address: 'Narayan Circle Bihar',
+    //       email: 'suraksha@yahoo.com',
+    //       contact: '1234-9876541',
+    //       name: 'Suraksha Vibhag ',
+    //       latlng: '41.40334, 2.17402',
+    //       incharge: 'Miss Narayani',
+    //       pincode: '305001',
+    //       web: 'surakshakendra.in',
+    //     },
+    //     latlng: '25.010021,12.907654',
+    //   };
+    //   try {
+    //     createAnimalCase(animalCase)
+    //       .then((response) => {
+    //         console.log('Success Create');
+    //         console.log(response);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   } catch (err) {
+    //     console.log('Server' + err);
+    //   }
+    // } else if (ref === 'put') {
+    // try {
+    //   let obj = this.state.cases[1];
+    //   let disease = this.state.cases[1].disease;
+    //   obj = {
+    //     ...obj,
+    //     disease: {
+    //       ...disease,
+    //       livestock: [
+    //         {
+    //           breed: 'Cattle',
+    //           population: 5000000,
+    //         },
+    //         {
+    //           breed: 'Buffalo',
+    //           population: 6000000,
+    //         },
+    //       ],
+    //     },
+    //   };
+    //   UpdateAnimalCase(obj)
+    //     .then((response) => {
+    //       console.log('Success Update');
+    //       console.log(response);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // } catch (err) {
+    //   console.log('Server' + err);
+    // }
+    // }
+    // } else if (ref === 'delete') {
+    // try {
+    //   DeleteAnimalCase(this.state.cases[1]._id)
+    //     .then((response) => {
+    //       console.log('Success Delete');
+    //       console.log(response);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // } catch (err) {
+    //   console.log('Server' + err);
+    // }
+    // }
     this.toggle();
   };
 
   render() {
+    console.log(localStorage);
     return (
       <div>
         <table class='table table-striped table-active'>
@@ -125,7 +281,6 @@ class Animal_Case extends Component {
                               style={{ marginTop: '2rem' }}
                               block
                             >
-                              {' '}
                               Update
                             </Button>
                           </FormGroup>
