@@ -9,6 +9,9 @@ function login({
   web,
   address,
   pincode,
+  total_affected,
+  total_recovered,
+  total_deaths,
 }) {
   return new Promise((resolve, reject) => {
     try {
@@ -21,6 +24,9 @@ function login({
         web,
         address,
         pincode,
+        total_affected,
+        total_recovered,
+        total_deaths,
       });
       return resolve(response);
     } catch (error) {

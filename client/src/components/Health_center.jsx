@@ -55,7 +55,7 @@ const Health_center = () => {
       }}
     />
   );
-
+  console.log(localStorage);
   return (
     <div style={sectionStyle}>
       <div className='row'>

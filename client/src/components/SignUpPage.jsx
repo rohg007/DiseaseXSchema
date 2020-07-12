@@ -12,6 +12,11 @@ function SignUpPage() {
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [contact, setContact] = React.useState('');
+  const [address, setAddress] = React.useState('');
+  const [pinCode, setPinCode] = React.useState('');
+  const [total_affected, setTotal_affected] = React.useState(0);
+  const [total_recovered, setTotal_recovered] = React.useState(0);
+  const [total_deaths, setTotal_deaths] = React.useState(0);
   const [inCharge, setIncharge] = React.useState('');
   const [web, setWeb] = React.useState('');
   const [error, setError] = React.useState({
@@ -19,6 +24,9 @@ function SignUpPage() {
     emailError: '',
     passwordError: '',
     confirmPasswordError: '',
+    total_recoveredError: '',
+    total_deathsError: '',
+    total_affectedError: '',
     contactError: '',
     inChargeError: '',
     overAllError: '',
@@ -26,7 +34,16 @@ function SignUpPage() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (!email || !password || !healthcenterName || !contact || !inCharge) {
+    if (
+      !email ||
+      !password ||
+      !healthcenterName ||
+      !contact ||
+      !inCharge ||
+      !total_affected ||
+      !total_recovered ||
+      !total_deaths
+    ) {
       setError((error) => ({
         ...error,
         overAllError: 'Please enter the required Values!',
@@ -41,7 +58,12 @@ function SignUpPage() {
         password: password,
         contact: contact,
         incharge: inCharge,
+        address: address,
+        pincode: pinCode,
         web: web,
+        total_affected: total_affected,
+        total_recovered: total_recovered,
+        total_deaths: total_deaths,
       })
         .then((response) => {
           setError((error) => ({
@@ -50,6 +72,9 @@ function SignUpPage() {
             emailError: '',
             contactError: '',
             passwordError: '',
+            total_recoveredError: '',
+            total_deathsError: '',
+            total_affectedError: '',
             inChargeError: '',
             overAllError: '',
             confirmPasswordError: '',
@@ -62,13 +87,13 @@ function SignUpPage() {
           setLoading(false);
           setError((error) => ({
             ...error,
-            overAllError: err,
+            overAllError: err.response.data.errors[0].msg,
           }));
         });
-    } catch (error) {
+    } catch (err) {
       setError((error) => ({
         ...error,
-        overAllError: error,
+        overAllError: err,
       }));
     }
   }
@@ -101,117 +126,148 @@ function SignUpPage() {
           </div>
           <form onSubmit={handleFormSubmit}>
             <div class='card-body'>
-              <div className='form-group'>
-                <label htmlFor='name'>Health Center name</label>
-                <input
-                  type='text'
-                  id='name'
-                  autoComplete='off'
-                  required
-                  className='form-control'
-                  onChange={(event) => {
-                    setHealthcenterName(event.target.value);
-                    setError((error) => ({ ...error, nameError: '' }));
-                  }}
-                  onBlur={() =>
-                    healthcenterName.length === 0
-                      ? setError((error) => ({
-                          ...error,
-                          nameError: 'Field cannot be empty',
-                        }))
-                      : null
-                  }
-                  placeholder='Enter Name'
-                />
-                <div className='errorLabel'>
-                  <p className='p-0'>{error.nameError}</p>
+              <div className='d-flex align-items-center'>
+                <div className='form-group pr-3' style={{ width: '50%' }}>
+                  <label htmlFor='name'>Health Center name</label>
+                  <input
+                    type='text'
+                    id='name'
+                    autoComplete='off'
+                    required
+                    className='form-control'
+                    onChange={(event) => {
+                      setHealthcenterName(event.target.value);
+                      setError((error) => ({ ...error, nameError: '' }));
+                    }}
+                    onBlur={() =>
+                      healthcenterName.length === 0
+                        ? setError((error) => ({
+                            ...error,
+                            nameError: 'Field cannot be empty',
+                          }))
+                        : null
+                    }
+                    placeholder='Enter Name'
+                  />
+                  <div className='errorLabel'>
+                    <p className='p-0'>{error.nameError}</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className='form-group'>
-                <label htmlFor='email'>Email address</label>
-                <input
-                  type='email'
-                  required
-                  id='email'
-                  autoComplete='on'
-                  className='form-control'
-                  placeholder='Enter email'
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                    setError((error) => ({ ...error, emailError: '' }));
-                  }}
-                  onBlur={() =>
-                    email.length === 0
-                      ? setError((error) => ({
-                          ...error,
-                          emailError: 'Enter a valid Email',
-                        }))
-                      : null
-                  }
-                />
-                <div className='errorLabel'>
-                  <p className='p-0'>{error.emailError}</p>
+                <div className='form-group' style={{ width: '50%' }}>
+                  <label htmlFor='email'>Email address</label>
+                  <input
+                    type='email'
+                    required
+                    id='email'
+                    autoComplete='on'
+                    className='form-control'
+                    placeholder='Enter email'
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                      setError((error) => ({ ...error, emailError: '' }));
+                    }}
+                    onBlur={() =>
+                      email.length === 0
+                        ? setError((error) => ({
+                            ...error,
+                            emailError: 'Enter a valid Email',
+                          }))
+                        : null
+                    }
+                  />
+                  <div className='errorLabel'>
+                    <p className='p-0'>{error.emailError}</p>
+                  </div>
                 </div>
               </div>
-
-              <div className='form-group'>
-                <label htmlFor='password'>Password</label>
-                <input
-                  type='password'
-                  id='password'
-                  autoComplete='off'
-                  required
-                  className='form-control'
-                  placeholder='Enter password'
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                    setError((error) => ({ ...error, passwordError: '' }));
-                  }}
-                  onBlur={() =>
-                    password.length < 6
-                      ? setError((error) => ({
-                          ...error,
-                          passwordError:
-                            'Password should be atleast 6 characters long!',
-                        }))
-                      : null
-                  }
-                />
-                <div className='errorLabel'>
-                  <p className='p-0'>{error.passwordError}</p>
+              <div className='d-flex align-items-center'>
+                <div className='form-group pr-3' style={{ width: '50%' }}>
+                  <label htmlFor='password'>Password</label>
+                  <input
+                    type='password'
+                    id='password'
+                    autoComplete='off'
+                    required
+                    className='form-control'
+                    placeholder='Enter password'
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                      setError((error) => ({ ...error, passwordError: '' }));
+                    }}
+                    onBlur={() =>
+                      password.length < 6
+                        ? setError((error) => ({
+                            ...error,
+                            passwordError:
+                              'Password should be atleast 6 characters long!',
+                          }))
+                        : null
+                    }
+                  />
+                  <div className='errorLabel'>
+                    <p className='p-0'>{error.passwordError}</p>
+                  </div>
+                </div>
+                <div className='form-group' style={{ width: '50%' }}>
+                  <label htmlFor='confirmpassword'>Confirm Password</label>
+                  <input
+                    type='password'
+                    id='confirmpassword'
+                    autoComplete='off'
+                    required
+                    className='form-control'
+                    placeholder='Confirm password'
+                    onChange={(event) => {
+                      setConfirmPassword(event.target.value);
+                      setError((error) => ({
+                        ...error,
+                        confirmPasswordError: '',
+                      }));
+                    }}
+                    onBlur={() =>
+                      password !== confirmPassword
+                        ? setError((error) => ({
+                            ...error,
+                            confirmPasswordError: "Doesn't match the password!",
+                          }))
+                        : null
+                    }
+                  />
+                  <div className='errorLabel'>
+                    <p className='p-0'>{error.confirmPasswordError}</p>
+                  </div>
                 </div>
               </div>
-              <div className='form-group'>
-                <label htmlFor='confirmpassword'>Confirm Password</label>
-                <input
-                  type='password'
-                  id='confirmpassword'
-                  autoComplete='off'
-                  required
-                  className='form-control'
-                  placeholder='Confirm password'
-                  onChange={(event) => {
-                    setConfirmPassword(event.target.value);
-                    setError((error) => ({
-                      ...error,
-                      confirmPasswordError: '',
-                    }));
-                  }}
-                  onBlur={() =>
-                    password !== confirmPassword
-                      ? setError((error) => ({
-                          ...error,
-                          confirmPasswordError: "Doesn't match the password!",
-                        }))
-                      : null
-                  }
-                />
-                <div className='errorLabel'>
-                  <p className='p-0'>{error.confirmPasswordError}</p>
+              <div className='d-flex align-items-center justify-content-center'>
+                <div className='form-group pr-3' style={{ width: '75%' }}>
+                  <label htmlFor='address'>Address</label>
+                  <input
+                    type='text'
+                    id='address'
+                    autoComplete='off'
+                    className='form-control'
+                    placeholder='Enter Address'
+                    onChange={(event) => {
+                      setAddress(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='pinCode'>Pin Code</label>
+                  <input
+                    type='text'
+                    id='pinCode'
+                    autoComplete='off'
+                    className='form-control'
+                    placeholder='PinCode'
+                    onChange={(event) => {
+                      setPinCode(event.target.value);
+                    }}
+                  />
                 </div>
               </div>
-              <div className='d-flex align-items-center jsutify-content-center'>
+              <div className='d-flex align-items-center justify-content-center'>
                 <div className='flex-fill pr-3'>
                   <div className='form-group'>
                     <label htmlFor='contactNumber'>Contact</label>
@@ -289,8 +345,108 @@ function SignUpPage() {
                   </div>
                 </div>
               </div>
+              <div className='d-flex align-items-center justify-content-center'>
+                <div className='flex-fill pr-3'>
+                  <div className='form-group'>
+                    <label htmlFor='totalAffected'>Affected</label>
+                    <input
+                      type='number'
+                      id='totalAffected'
+                      autoComplete='off'
+                      required
+                      className='form-control'
+                      placeholder='Total Affected'
+                      onChange={(event) => {
+                        setTotal_affected(event.target.value);
+                        setError((error) => ({
+                          ...error,
+                          total_affectedError: '',
+                        }));
+                      }}
+                      onBlur={() =>
+                        total_affected.length === 0
+                          ? setError((error) => ({
+                              ...error,
+                              total_affectedError: 'Cannot be empty!',
+                            }))
+                          : null
+                      }
+                    />
+                    <div className='errorLabel'>
+                      <p className='p-0'>{error.total_affectedError}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='flex-fill pr-3'>
+                  <div className='form-group'>
+                    <label htmlFor='totalRecovered'>Recovered</label>
+                    <input
+                      type='number'
+                      id='totalRecovered'
+                      autoComplete='off'
+                      required
+                      className='form-control'
+                      placeholder='Total Recovered'
+                      onChange={(event) => {
+                        setTotal_recovered(event.target.value);
+                        setError((error) => ({
+                          ...error,
+                          total_recoveredError: '',
+                        }));
+                      }}
+                      onBlur={() =>
+                        total_recovered.length === 0
+                          ? setError((error) => ({
+                              ...error,
+                              total_recoveredError: 'Cannot be empty!',
+                            }))
+                          : null
+                      }
+                    />
+                    <div className='errorLabel'>
+                      <p className='p-0'>{error.total_recoveredError}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='flex-fill'>
+                  <div className='form-group'>
+                    <label htmlFor='totalDeaths'>Deaths</label>
+                    <input
+                      type='number'
+                      id='totalDeaths'
+                      autoComplete='off'
+                      required
+                      className='form-control'
+                      placeholder='Total Deaths'
+                      onChange={(event) => {
+                        setTotal_deaths(event.target.value);
+                        setError((error) => ({
+                          ...error,
+                          total_deathsError: '',
+                        }));
+                      }}
+                      onBlur={() =>
+                        total_deaths.length === 0
+                          ? setError((error) => ({
+                              ...error,
+                              total_deathsError: 'Cannot be empty!',
+                            }))
+                          : null
+                      }
+                    />
+                    <div className='errorLabel'>
+                      <p className='p-0'>{error.total_deathsError}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class='card-footer d-flex align-items-center flex-column'>
+              {error.overAllError ? (
+                <div className=' float-left errorLabel'>
+                  <p className='p-0 '>{error.overAllError}</p>
+                </div>
+              ) : null}
               <div className='ml-auto'>
                 <button
                   type='submit'
