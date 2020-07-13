@@ -58,11 +58,12 @@ var diseaseSchema = new Schema({
   },
   total_affected: {
     type: Number,
-    required: true,
   },
   total_deaths: {
     type: Number,
-    required: true,
+  },
+  total_recovered: {
+    type: Number,
   },
   livestock: [livestockSchema],
   vaccine: [vaccineSchema],

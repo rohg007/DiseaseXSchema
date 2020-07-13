@@ -8,7 +8,6 @@ var vaccineSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   duration: {
     type: Number,
@@ -16,7 +15,6 @@ var vaccineSchema = new Schema({
   },
   forHuman: {
     type: String,
-    required: true,
   },
 });
 
@@ -27,7 +25,6 @@ var livestockSchema = new Schema({
   },
   population: {
     type: Number,
-    required: true,
   },
 });
 
@@ -38,11 +35,9 @@ var diseaseSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   precautions: {
     type: String,
-    required: true,
   },
   symptoms: {
     type: String,
@@ -50,19 +45,18 @@ var diseaseSchema = new Schema({
   },
   morbidity: {
     type: Number,
-    required: true,
   },
   mortality: {
     type: Number,
-    required: true,
   },
   total_affected: {
     type: Number,
-    required: true,
   },
   total_deaths: {
     type: Number,
-    required: true,
+  },
+  total_recovered: {
+    type: Number,
   },
   livestock: [livestockSchema],
   vaccine: [vaccineSchema],
@@ -128,9 +122,11 @@ var humanCaseSchema = new Schema({
   },
   patientAddress: {
     type: String,
+    required: true,
   },
   patientEmail: {
     type: String,
+    required: true,
   },
   patientContact: {
     type: String,

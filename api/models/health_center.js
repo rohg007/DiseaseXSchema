@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 var healthCenterSchema = new Schema({
   address: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
@@ -37,6 +38,7 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
