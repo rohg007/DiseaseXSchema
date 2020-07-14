@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import data from '../ConstantDB/Human_case.json';
 import 'bootstrap/dist/css/bootstrap.css';
+import getAllHumanCases from '../api/humanCases/getAllhumanCase';
 import {
   Button,
   Modal,
@@ -13,16 +14,35 @@ import {
 } from 'reactstrap';
 
 import editImage from '../images/edit.png';
-const filtereddata = data.humanCaseSchema.filter((temp) => {
-  return temp.healthCenter.email === 'suraksha@yahoo.com';
-});
+
 var k = 0;
 
 class Example2 extends Component {
   state = {
+    cases: [],
     modal: false,
     name: '',
+    filtereddata:[]
   };
+    componentDidMount() {
+    try {
+      getAllHumanCases()
+        .then((response) => {
+          console.log(response);
+          this.setState({ cases: response.data });
+          const filtereddata = data.humanCaseSchema.filter((temp) => {
+            return temp.healthCenter.email === 'suraksha@yahoo.com';
+          });
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log('Server' + err);
+    }
+  }
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -57,7 +77,7 @@ class Example2 extends Component {
             </tr>
           </thead>
           <tbody>
-            {filtereddata.map((experience, i) => {
+            {data.map((experience, i) => {
               k = k + 1;
               return (
                 <tr>

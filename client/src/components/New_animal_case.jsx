@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Background from '../images/background.jpg';
-
+import createAnimalCase from '../api/animalCase/createAnimalCase';
 var sectionStyle = {
   backgroundImage: 'url(' + Background + ')',
   backgroundPosition: 'center',
@@ -11,6 +11,55 @@ var sectionStyle = {
 export default class New_animal_case extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  submit = (e) => {
+    e.preventDefault();
+    console.log('we are here');
+    let animalCase = {
+      animal: {
+        status: 'Deceased',
+        breed: 'Duck',
+        owner: {
+          name: 'Michael Faraday',
+          address: '8 Pleasant Rd. Glen Burnie',
+          email: 'michael@gmail.com',
+          contact: '9100020123',
+        }
+      },
+      disease: {
+        name: 'Blackleg',
+        symptoms: 'Dark Leg, Heavy,Painful movement of legs',
+  
+      },
+      healthCenter: {
+        address: 'Narayan Circle Bihar',
+        email: 'suraksha@yahoo.com',
+        contact: '1234-9876541',
+        name: 'Suraksha Vibhag ',
+        latlng: '41.40334, 2.17402',
+        incharge: 'Miss Narayani',
+        pincode: '305001',
+        web: 'surakshakendra.in',
+        total_recovered: '40',
+        total_affected: '60',
+        total_deaths:'5',
+      },
+      latlng: '25.010021,12.907654',
+    };
+
+    try {
+      createAnimalCase(animalCase)
+        .then((response) => {
+          console.log('Success Create');
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log('Server' + err);
+    }
   };
 
   render() {
@@ -73,7 +122,11 @@ export default class New_animal_case extends Component {
           </div>
         </div>
         <div class='card-footer'>
-          <button type='submit' className='btn btn-primary btn-block'>
+          <button
+            type='submit'
+            onClick={this.submit}
+            className='btn btn-primary btn-block'
+          >
             Submit
           </button>
           <p className='forgot-password text-right'>
