@@ -21,7 +21,6 @@ var vaccineSchema = new Schema({
 var livestockSchema = new Schema({
   breed: {
     type: String,
-    required: true,
   },
   population: {
     type: Number,
@@ -65,6 +64,7 @@ var diseaseSchema = new Schema({
 var healthCenterSchema = new Schema({
   address: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
@@ -84,7 +84,6 @@ var healthCenterSchema = new Schema({
   },
   latlng: {
     type: String,
-    required: true,
   },
   incharge: {
     type: String,
@@ -92,6 +91,7 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
@@ -129,6 +129,10 @@ var humanCaseSchema = new Schema({
     required: true,
   },
   patientContact: {
+    type: String,
+    required: true,
+  },
+  pincode: {
     type: String,
     required: true,
   },

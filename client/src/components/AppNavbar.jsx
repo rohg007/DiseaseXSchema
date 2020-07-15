@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
@@ -8,10 +8,12 @@ function AppNavBar() {
   let history = useHistory();
   const [logoutoption, setLogoutOption] = React.useState(true);
   return (
-    <div className='container-fluid p-0'>
-      <Navbar color='dark' dark expand='lm' className='mb-5'>
+    <div className='container-fluid p-0 sticky-top'>
+      <Navbar color='dark' dark expand='lm' className='mb-5 '>
         <Container>
-          <NavbarBrand href='/'>DiseaseX</NavbarBrand>
+          <NavbarBrand href={localStorage.user ? '/health_center' : '/'}>
+            DiseaseX
+          </NavbarBrand>
           {localStorage.user ? (
             <div
               onClick={() => {

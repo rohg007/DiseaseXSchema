@@ -55,89 +55,92 @@ const Health_center = () => {
       }}
     />
   );
-  console.log(localStorage);
   return (
-    <div style={sectionStyle}>
-      <div className='row'>
-        <div
-          style={{
-            width: '50%',
-            height: '50%',
-            justifyContent: 'center',
-            paddingLeft: '5%',
-          }}
-        >
-          {barChart}
-        </div>
-
-        <div
-          class='btn-group mr-7'
-          role='group'
-          aria-label='First group'
-          style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
-        >
-          <a class='btn btn-large btn-dark' href='/new_humancase'>
-            NEW HUMAN CASE
-          </a>
-          <a class='btn btn-large btn-dark' href='/new_animalcase'>
-            NEW ANIMAL CASE
-          </a>
-          <a class='btn btn-large btn-dark' href='/human_case'>
-            HUMAN CASES
-          </a>
-          <a class='btn btn-large btn-dark' href='/animal_case'>
-            ANIMAL CASES
-          </a>
-        </div>
-      </div>
-      <div className='row'>
-        {' '}
-        {subdisease.map((dise, i) => {
-          return (
-            <div style={{ width: '25%', height: '25%', paddingTop: '3%' }}>
-              <Doughnut
-                data={{
-                  labels: ['Infected', 'Recoverd', 'Deaths'],
-                  datasets: [
-                    {
-                      label: 'Rainfall',
-                      backgroundColor: [
-                        'rgba(0, 0, 255, 0.7)',
-                        'rgba(0, 255, 0, 0.7)',
-                        'rgba(255, 0, 0, 0.7)',
-                      ],
-                      hoverBackgroundColor: ['blue', 'green', 'red'],
-                      data: [
-                        dise.total_affected,
-                        dise.total_recovered,
-                        dise.total_deaths,
-                      ],
-                    },
-                  ],
-                }}
-                options={{
-                  title: {
-                    display: true,
-                    text: dise.name,
-                    fontColor: 'black',
-                    fontSize: 15,
-                    position: 'top',
-                  },
-                  legend: {
-                    display: true,
-                    fontColor: 'black',
-                    fontSize: '2',
-                    position: 'right',
-                  },
-                  labels: {
-                    fontColor: 'black',
-                  },
-                }}
-              />
+    <div className='container-fluid p-0'>
+      {localStorage.user ? (
+        <div style={sectionStyle}>
+          <div className='row'>
+            <div
+              style={{
+                width: '50%',
+                height: '50%',
+                justifyContent: 'center',
+                paddingLeft: '5%',
+              }}
+            >
+              {barChart}
             </div>
-          );
-        })}
-      </div>
+
+            <div
+              class='btn-group mr-7'
+              role='group'
+              aria-label='First group'
+              style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
+            >
+              <a class='btn btn-large btn-dark' href='/new_humancase'>
+                NEW HUMAN CASE
+              </a>
+              <a class='btn btn-large btn-dark' href='/new_animalcase'>
+                NEW ANIMAL CASE
+              </a>
+              <a class='btn btn-large btn-dark' href='/human_case'>
+                HUMAN CASES
+              </a>
+              <a class='btn btn-large btn-dark' href='/animal_case'>
+                ANIMAL CASES
+              </a>
+            </div>
+          </div>
+          <div className='row'>
+            {' '}
+            {subdisease.map((dise, i) => {
+              return (
+                <div style={{ width: '25%', height: '25%', paddingTop: '3%' }}>
+                  <Doughnut
+                    data={{
+                      labels: ['Infected', 'Recoverd', 'Deaths'],
+                      datasets: [
+                        {
+                          label: 'Rainfall',
+                          backgroundColor: [
+                            'rgba(0, 0, 255, 0.7)',
+                            'rgba(0, 255, 0, 0.7)',
+                            'rgba(255, 0, 0, 0.7)',
+                          ],
+                          hoverBackgroundColor: ['blue', 'green', 'red'],
+                          data: [
+                            dise.total_affected,
+                            dise.total_recovered,
+                            dise.total_deaths,
+                          ],
+                        },
+                      ],
+                    }}
+                    options={{
+                      title: {
+                        display: true,
+                        text: dise.name,
+                        fontColor: 'black',
+                        fontSize: 15,
+                        position: 'top',
+                      },
+                      legend: {
+                        display: true,
+                        fontColor: 'black',
+                        fontSize: '2',
+                        position: 'right',
+                      },
+                      labels: {
+                        fontColor: 'black',
+                      },
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -19,7 +19,9 @@ import New_animal_case from './components/New_animal_case';
 var sectionStyle = {
   backgroundImage: 'url(' + Background + ')',
   width: '100%',
-  height: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
 };

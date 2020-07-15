@@ -12,8 +12,6 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Label,
-  Input,
 } from 'reactstrap';
 
 import editImage from '../images/edit.png';
@@ -32,7 +30,6 @@ class Animal_Case extends Component {
     try {
       GetAllAnimalCases()
         .then((response) => {
-          console.log(response);
           this.setState({ cases: response.data });
         })
         .catch((err) => {
@@ -199,100 +196,101 @@ class Animal_Case extends Component {
   };
 
   render() {
-    console.log(localStorage);
     return (
       <div>
-        <table class='table table-striped table-active'>
-          <thead>
-            <tr>
-              <th>S.No.</th>
-              <th>Owner Name</th>
-              <th>Breed</th>
-              <th>CaseID</th>
-              <th>Status</th>
-              <th>Update</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtereddata.map((experience, i) => {
-              k = k + 1;
-              return (
-                <tr>
-                  <th scope='row'>{k}</th>
-                  <td>{experience.animal.owner.name}</td>
-                  <td>{experience.animal.liveStock.breed}</td>
-                  <td>{experience.caseID}</td>
-                  <td>{experience.animal.status}</td>
-                  <td>
-                    <img
-                      width='10%'
-                      height='50%'
-                      src={editImage}
-                      role='button'
-                      color='dark'
-                      style={{ marginBottom: '2rem' }}
-                      onClick={this.toggle}
-                    />
-                    <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                      <ModalHeader toggle={this.toggle}>
-                        Update the status of the animal
-                      </ModalHeader>
-                      <ModalBody>
-                        <Form onSubmit={this.onSubmit}>
-                          <FormGroup>
-                            <div onChange={this.onChangeValue}>
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Infected
-                              </div>
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Deceased
-                              </div>
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Recovered
+        {localStorage.user ? (
+          <table class='table table-striped table-active'>
+            <thead>
+              <tr>
+                <th>S.No.</th>
+                <th>Owner Name</th>
+                <th>Breed</th>
+                <th>CaseID</th>
+                <th>Status</th>
+                <th>Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtereddata.map((experience, i) => {
+                k = k + 1;
+                return (
+                  <tr>
+                    <th scope='row'>{k}</th>
+                    <td>{experience.animal.owner.name}</td>
+                    <td>{experience.animal.liveStock.breed}</td>
+                    <td>{experience.caseID}</td>
+                    <td>{experience.animal.status}</td>
+                    <td>
+                      <img
+                        width='10%'
+                        height='50%'
+                        src={editImage}
+                        role='button'
+                        color='dark'
+                        style={{ marginBottom: '2rem' }}
+                        onClick={this.toggle}
+                      />
+                      <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                        <ModalHeader toggle={this.toggle}>
+                          Update the status of the animal
+                        </ModalHeader>
+                        <ModalBody>
+                          <Form onSubmit={this.onSubmit}>
+                            <FormGroup>
+                              <div onChange={this.onChangeValue}>
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Male'
+                                    name='gender'
+                                  />{' '}
+                                  Infected
+                                </div>
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Male'
+                                    name='gender'
+                                  />{' '}
+                                  Deceased
+                                </div>
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Male'
+                                    name='gender'
+                                  />{' '}
+                                  Recovered
+                                </div>
+
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Male'
+                                    name='gender'
+                                  />{' '}
+                                  Delete
+                                </div>
                               </div>
 
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Delete
-                              </div>
-                            </div>
-
-                            <Button
-                              color='dark'
-                              style={{ marginTop: '2rem' }}
-                              block
-                            >
-                              Update
-                            </Button>
-                          </FormGroup>
-                        </Form>
-                      </ModalBody>
-                    </Modal>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                              <Button
+                                color='dark'
+                                style={{ marginTop: '2rem' }}
+                                block
+                              >
+                                Update
+                              </Button>
+                            </FormGroup>
+                          </Form>
+                        </ModalBody>
+                      </Modal>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : null}
       </div>
     );
   }

@@ -9,8 +9,6 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
-    index: true,
-    sparse: true,
   },
   password: {
     type: String,
