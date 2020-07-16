@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import data from '../ConstantDB/Animal_Case.json';
 import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
-import createAnimalCase from '../api/animalCase/createAnimalCase.jsx';
-import DeleteAnimalCase from '../api/animalCase/deleteAnimalCase.jsx';
-import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
+// import createAnimalCase from '../api/animalCase/createAnimalCase.jsx';
+// import DeleteAnimalCase from '../api/animalCase/deleteAnimalCase.jsx';
+// import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   Button,
@@ -222,6 +222,7 @@ class Animal_Case extends Component {
                     <td>{experience.animal.status}</td>
                     <td>
                       <img
+                        alt='Loading...'
                         width='10%'
                         height='50%'
                         src={editImage}

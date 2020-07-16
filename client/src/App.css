@@ -14,7 +14,8 @@
 }
 
 .userName {
-  font-size: 18px;
+  font-size: 14px;
+  cursor: pointer;
   color: #364e65;
 }
 
@@ -35,6 +36,18 @@
   text-decoration: none;
   background: rgba(236, 84, 122, 0.1);
 }
+.register {
+  font-size: 14px;
+  cursor: pointer;
+  color: #3796f6;
+}
+.register:hover {
+  color: #3796f6;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  background: #f7fafc;
+}
 .divider {
   margin: 0 0 0 0;
 }
@@ -44,4 +57,11 @@
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+}
+
+.menuBar {
+  background-color: #fff;
+  border: 0;
+  width: 15px;
+  height: 2px;
 }
