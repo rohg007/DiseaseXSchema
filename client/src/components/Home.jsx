@@ -3,16 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import './cars.css';
 import { Button } from 'reactstrap';
-import Login from '../images/Login.png';
 
 function Home() {
-  console.log(localStorage);
   return (
-    <div class='card-deck'>
+    <div className='card-deck'>
       <div
-        class='card'
-        body
-        inverse
+        className='card'
+        body='true'
+        inverse='true'
         style={{
           marginLeft: '20%',
           marginTop: '4%',
@@ -21,13 +19,13 @@ function Home() {
         }}
       >
         <div
-          class='card-header'
+          className='card-header'
           style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}
         >
           <h3>DiseaseX</h3>
         </div>
-        <div class='card-body text-center'>
-          <p class='card-text ' style={{ color: 'white' }}>
+        <div className='card-body text-center'>
+          <p className='card-text ' style={{ color: 'white' }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -39,9 +37,9 @@ function Home() {
         </div>
       </div>
       <div
-        class='card'
-        body
-        inverse
+        className='card'
+        body='true'
+        inverse='true'
         style={{
           marginLeft: '20%',
           marginRight: '20%',
@@ -52,14 +50,15 @@ function Home() {
           width: '4%',
         }}
       >
-        <div class='card-header' style={{ color: 'black' }}>
+        <div className='card-header' style={{ color: 'black' }}>
           <img
             width='40px'
+            alt='Loading...'
             src='https://img.icons8.com/ios-filled/100/000000/login-rounded-right.png'
           />
           <strong>Login As</strong>{' '}
         </div>
-        <div class='card-body'>
+        <div className='card-body'>
           <Button
             style={{ color: 'black', backgroundColor: '#5ca08a' }}
             href='/loginPage'

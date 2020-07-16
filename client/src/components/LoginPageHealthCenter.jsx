@@ -88,9 +88,9 @@ function LoginPageHealthcenter() {
             </div>
           ) : (
             <div
-              class='card'
-              body
-              inverse
+              className='card'
+              body='true'
+              inverse='true'
               style={{
                 marginLeft: '20%',
                 marginRight: '20%',
@@ -100,11 +100,11 @@ function LoginPageHealthcenter() {
                 borderColor: '#333',
               }}
             >
-              <div class='card-header'>
+              <div className='card-header'>
                 <h3>Health Center Sign In</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
-                <div class='card-body'>
+                <div className='card-body'>
                   <div className='form-group'>
                     <label htmlFor='email'>Email address</label>
                     <input
@@ -164,7 +164,7 @@ function LoginPageHealthcenter() {
                       <p className='p-0 '>{error.overAllError}</p>
                     </div>
                   ) : null}
-                  <div class='d-flex align-items-center flex-column'>
+                  <div className='d-flex align-items-center flex-column'>
                     <div className='ml-auto'>
                       <button
                         type='submit'

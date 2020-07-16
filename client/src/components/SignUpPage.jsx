@@ -87,7 +87,7 @@ function SignUpPage() {
           }));
           setLoading(false);
           localStorage.setItem('user', JSON.stringify(response.data));
-          history.replace('/animal_case');
+          history.replace('/health_center');
         })
         .catch((err) => {
           setLoading(false);
@@ -119,8 +119,8 @@ function SignUpPage() {
           ) : (
             <div
               className='card'
-              body
-              inverse
+              body='true'
+              inverse='true'
               style={{
                 marginLeft: '20%',
                 marginRight: '20%',
@@ -133,7 +133,7 @@ function SignUpPage() {
                 <h3>Sign Up</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
-                <div class='card-body'>
+                <div className='card-body'>
                   <div className='d-flex align-items-center'>
                     <div className='form-group pr-3' style={{ width: '50%' }}>
                       <label htmlFor='name'>Health Center name</label>

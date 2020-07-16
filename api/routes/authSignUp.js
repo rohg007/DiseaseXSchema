@@ -84,7 +84,7 @@ route.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, name, email, contact, gravatar, address, pincode });
+          res.json(healthcenter);
         }
       );
     } catch (err) {

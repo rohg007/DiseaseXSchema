@@ -8,8 +8,6 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Label,
-  Input,
 } from 'reactstrap';
 
 import editImage from '../images/edit.png';
@@ -67,6 +65,7 @@ class Example2 extends Component {
                   <td>{experience.status}</td>
                   <td>
                     <img
+                      alt='Loading...'
                       width='10%'
                       height='50%'
                       src={editImage}

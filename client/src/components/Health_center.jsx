@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pie, Doughnut, Bar } from 'react-chartjs-2';
+import { Doughnut, Bar } from 'react-chartjs-2';
 import disease from '../ConstantDB/disease.json';
 import healthcenterdata from '../ConstantDB/healthCenter.json';
 import Background from '../images/background.jpg';
@@ -55,6 +55,7 @@ const Health_center = () => {
       }}
     />
   );
+  console.log(localStorage);
   return (
     <div className='container-fluid p-0'>
       {localStorage.user ? (
@@ -72,21 +73,21 @@ const Health_center = () => {
             </div>
 
             <div
-              class='btn-group mr-7'
+              className='btn-group mr-7'
               role='group'
               aria-label='First group'
               style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
             >
-              <a class='btn btn-large btn-dark' href='/new_humancase'>
+              <a className='btn btn-large btn-dark' href='/new_humancase'>
                 NEW HUMAN CASE
               </a>
-              <a class='btn btn-large btn-dark' href='/new_animalcase'>
+              <a className='btn btn-large btn-dark' href='/new_animalcase'>
                 NEW ANIMAL CASE
               </a>
-              <a class='btn btn-large btn-dark' href='/human_case'>
+              <a className='btn btn-large btn-dark' href='/human_case'>
                 HUMAN CASES
               </a>
-              <a class='btn btn-large btn-dark' href='/animal_case'>
+              <a className='btn btn-large btn-dark' href='/animal_case'>
                 ANIMAL CASES
               </a>
             </div>
@@ -95,7 +96,10 @@ const Health_center = () => {
             {' '}
             {subdisease.map((dise, i) => {
               return (
-                <div style={{ width: '25%', height: '25%', paddingTop: '3%' }}>
+                <div
+                  style={{ width: '25%', height: '25%', paddingTop: '3%' }}
+                  key={i}
+                >
                   <Doughnut
                     data={{
                       labels: ['Infected', 'Recoverd', 'Deaths'],
