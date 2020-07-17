@@ -8,26 +8,22 @@ var vaccineSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   duration: {
     type: Number,
     required: true,
   },
   forHuman: {
-    type: Boolean,
-    required: true,
+    type: String,
   },
 });
 
 var livestockSchema = new Schema({
   breed: {
     type: String,
-    required: true,
   },
   population: {
     type: Number,
-    required: true,
   },
 });
 
@@ -38,11 +34,9 @@ var diseaseSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   precautions: {
     type: String,
-    required: true,
   },
   symptoms: {
     type: String,
@@ -50,19 +44,18 @@ var diseaseSchema = new Schema({
   },
   morbidity: {
     type: Number,
-    required: true,
   },
   mortality: {
     type: Number,
-    required: true,
   },
   total_affected: {
     type: Number,
-    required: true,
   },
   total_deaths: {
     type: Number,
-    required: true,
+  },
+  total_recovered: {
+    type: Number,
   },
   livestock: [livestockSchema],
   vaccine: [vaccineSchema],
@@ -71,13 +64,9 @@ var diseaseSchema = new Schema({
 var healthCenterSchema = new Schema({
   address: {
     type: String,
+    required: true,
   },
   email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
     type: String,
     required: true,
   },
@@ -95,7 +84,6 @@ var healthCenterSchema = new Schema({
   },
   latlng: {
     type: String,
-    required: true,
   },
   incharge: {
     type: String,
@@ -103,24 +91,48 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
   },
+
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
+  },
 });
 
 var humanCaseSchema = new Schema({
+  status: {
+    type: String,
+    required: true,
+  },
   patientName: {
     type: String,
     required: true,
   },
   patientAddress: {
     type: String,
+    required: true,
   },
   patientEmail: {
     type: String,
+    required: true,
   },
   patientContact: {
+    type: String,
+    required: true,
+  },
+  pincode: {
     type: String,
     required: true,
   },

@@ -8,9 +8,15 @@ var animalOwnerSchema = new Schema({
   },
   address: {
     type: String,
+    required: true,
+  },
+  pincode: {
+    type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
   contact: {
     type: String,
@@ -25,7 +31,6 @@ var livestockSchema = new Schema({
   },
   population: {
     type: Number,
-    required: true,
   },
 });
 
@@ -36,19 +41,21 @@ var vaccineSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   duration: {
     type: Number,
     required: true,
   },
   forHuman: {
-    type: Boolean,
-    required: true,
+    type: String,
   },
 });
 
 var animalSchema = new Schema({
+  status: {
+    type: String,
+    required: true,
+  },
   livestock: {
     type: livestockSchema,
   },
@@ -56,8 +63,7 @@ var animalSchema = new Schema({
     type: animalOwnerSchema,
   },
   nextVaccination: {
-    type: String,
-    required: true,
+    type: Date,
   },
   vaccine: {
     type: vaccineSchema,
@@ -71,11 +77,9 @@ var diseaseSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   precautions: {
     type: String,
-    required: true,
   },
   symptoms: {
     type: String,
@@ -83,34 +87,25 @@ var diseaseSchema = new Schema({
   },
   morbidity: {
     type: Number,
-    required: true,
   },
   mortality: {
     type: Number,
-    required: true,
   },
   total_affected: {
     type: Number,
-    required: true,
   },
   total_deaths: {
     type: Number,
-    required: true,
+  },
+  total_recovered: {
+    type: Number,
   },
   livestock: [livestockSchema],
   vaccine: [vaccineSchema],
 });
 
 var healthCenterSchema = new Schema({
-  address: {
-    type: String,
-  },
   email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
     type: String,
     required: true,
   },
@@ -128,6 +123,9 @@ var healthCenterSchema = new Schema({
   },
   latlng: {
     type: String,
+  },
+  address: {
+    type: String,
     required: true,
   },
   incharge: {
@@ -136,9 +134,23 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
+  },
+
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
   },
 });
 
@@ -150,7 +162,7 @@ var animalCaseSchema = new Schema({
     type: healthCenterSchema,
   },
   disease: {
-    diseaseSchema,
+    type: diseaseSchema,
   },
   latlng: {
     type: String,

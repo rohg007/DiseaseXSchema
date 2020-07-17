@@ -33,6 +33,9 @@ route.post(
       incharge,
       pincode,
       web,
+      total_affected,
+      total_deaths,
+      total_recovered,
     } = req.body;
     try {
       //See if HealthCenter Exists
@@ -60,6 +63,9 @@ route.post(
         pincode,
         incharge,
         web,
+        total_affected,
+        total_deaths,
+        total_recovered,
       });
       //Encrypt Password
       const salt = await bcrypt.genSalt(10);
@@ -75,10 +81,10 @@ route.post(
       jwt.sign(
         payload,
         config.get('jwtToken'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json(healthcenter);
         }
       );
     } catch (err) {
@@ -142,10 +148,10 @@ route.post(
       jwt.sign(
         payload,
         config.get('jwtToken'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token, name, email, gravatar });
         }
       );
     } catch (err) {

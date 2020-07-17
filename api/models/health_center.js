@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 var healthCenterSchema = new Schema({
   address: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -29,7 +29,6 @@ var healthCenterSchema = new Schema({
   },
   latlng: {
     type: String,
-    required: true,
   },
   incharge: {
     type: String,
@@ -37,9 +36,22 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
+  },
+  total_affected: {
+    type: Number,
+    required: true,
+  },
+  total_deaths: {
+    type: Number,
+    required: true,
+  },
+  total_recovered: {
+    type: Number,
+    required: true,
   },
 });
 

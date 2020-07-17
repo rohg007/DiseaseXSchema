@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import data from '../ConstantDB/Animal_Case.json';
+import data from '../ConstantDB/Human_case.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   Button,
@@ -8,18 +8,15 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Label,
-  Input,
 } from 'reactstrap';
 
-import Search from './Search';
 import editImage from '../images/edit.png';
-const filtereddata = data.animalCaseSchema.filter((temp) => {
+const filtereddata = data.humanCaseSchema.filter((temp) => {
   return temp.healthCenter.email === 'suraksha@yahoo.com';
 });
 var k = 0;
 
-class Animal_Case extends Component {
+class Example2 extends Component {
   state = {
     modal: false,
     name: '',
@@ -51,9 +48,8 @@ class Animal_Case extends Component {
           <thead>
             <tr>
               <th>S.No.</th>
-              <th>Owner Name</th>
-              <th>Breed</th>
-              <th>CaseID</th>
+              <th>Name</th>
+              <th>Id</th>
               <th>Status</th>
               <th>Update</th>
             </tr>
@@ -64,12 +60,12 @@ class Animal_Case extends Component {
               return (
                 <tr>
                   <th scope='row'>{k}</th>
-                  <td>{experience.animal.owner.name}</td>
-                  <td>{experience.animal.liveStock.breed}</td>
-                  <td>{experience.caseID}</td>
-                  <td>{experience.animal.status}</td>
+                  <td>{experience.patientName}</td>
+                  <td>{experience.id}</td>
+                  <td>{experience.status}</td>
                   <td>
                     <img
+                      alt='Loading...'
                       width='10%'
                       height='50%'
                       src={editImage}
@@ -80,44 +76,24 @@ class Animal_Case extends Component {
                     />
                     <Modal isOpen={this.state.modal} toggle={this.toggle}>
                       <ModalHeader toggle={this.toggle}>
-                        Update the status of the animal
+                        Update the status of the patient
                       </ModalHeader>
                       <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                           <FormGroup>
                             <div onChange={this.onChangeValue}>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Infected
+                                <input type='radio' /> Infected
                               </div>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Deceased
+                                <input type='radio' /> Deceased
                               </div>
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Recovered
+                                <input type='radio' /> Recovered
                               </div>
 
                               <div>
-                                <input
-                                  type='radio'
-                                  value='Male'
-                                  name='gender'
-                                />{' '}
-                                Delete
+                                <input type='radio' /> Delete Entry
                               </div>
                             </div>
 
@@ -143,4 +119,4 @@ class Animal_Case extends Component {
     );
   }
 }
-export default Animal_Case;
+export default Example2;
