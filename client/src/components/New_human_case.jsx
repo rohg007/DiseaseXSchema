@@ -146,6 +146,9 @@ function NewHumanCase() {
       let newDisease = {
         name: diseaseName,
         symptoms: symptoms,
+        total_affected: Math.floor(1000 + Math.random() * 9000),
+        total_deaths: Math.floor(100 + Math.random() * 900),
+        total_recovered: Math.floor(1000 + Math.random() * 9000),
         vaccine: [{ name: vaccines, duration: parseInt(duration) }],
       };
       let humancase = {
