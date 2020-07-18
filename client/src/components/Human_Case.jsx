@@ -44,7 +44,7 @@ class Example2 extends Component {
   render() {
     return (
       <div>
-        <table class='table table-striped table-active'>
+        <table className='table table-striped table-active'>
           <thead>
             <tr>
               <th>S.No.</th>
@@ -58,7 +58,7 @@ class Example2 extends Component {
             {filtereddata.map((experience, i) => {
               k = k + 1;
               return (
-                <tr>
+                <tr key={i}>
                   <th scope='row'>{k}</th>
                   <td>{experience.patientName}</td>
                   <td>{experience.id}</td>

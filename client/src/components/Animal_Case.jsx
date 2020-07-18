@@ -199,7 +199,7 @@ class Animal_Case extends Component {
     return (
       <div>
         {localStorage.user ? (
-          <table class='table table-striped table-active'>
+          <table className='table table-striped table-active'>
             <thead>
               <tr>
                 <th>S.No.</th>
@@ -214,7 +214,7 @@ class Animal_Case extends Component {
               {filtereddata.map((experience, i) => {
                 k = k + 1;
                 return (
-                  <tr>
+                  <tr key={i}>
                     <th scope='row'>{k}</th>
                     <td>{experience.animal.owner.name}</td>
                     <td>{experience.animal.liveStock.breed}</td>

@@ -44,7 +44,7 @@ function LoginPageAdmin() {
             .then((response) => {
               setLoading(false);
               localStorage.setItem('user', JSON.stringify(response.data));
-              history.replace('/health_center');
+              history.replace('/admin');
             })
             .catch((err) => {
               if (err.response) {

@@ -121,7 +121,10 @@ var healthCenterSchema = new Schema({
     type: String,
     required: true,
   },
-  latlng: {
+  lat: {
+    type: String,
+  },
+  lng: {
     type: String,
   },
   address: {
@@ -164,7 +167,13 @@ var animalCaseSchema = new Schema({
   disease: {
     type: diseaseSchema,
   },
-  latlng: {
+  lat: {
+    type: String,
+  },
+  lng: {
+    type: String,
+  },
+  date: {
     type: String,
   },
 });
