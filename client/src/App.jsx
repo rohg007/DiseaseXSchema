@@ -5,10 +5,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import AppNavbar from './components/AppNavbar.jsx';
 import Home from './components/Home.jsx';
-import Background from './images/background.jpg';
 import Animal_Case from './components/Animal_Case.jsx';
 import Human_Case from './components/Human_Case.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
+import Admin from './components/Admin.jsx';
 import LoginPageHealthCenter from './components/LoginPageHealthCenter.jsx';
 import LoginPageAdmin from './components/LoginPageAdmin.jsx';
 import Health_center from './components/Health_center.jsx';
@@ -39,6 +39,7 @@ function App() {
           <Route path='/loginPageAdmin' component={LoginPageAdmin} />
           <Route path='/health_center' component={Health_center} />
           <Route path='/new_humancase' component={New_human_case} />
+          <Route path='/admin' component={Admin} />
           <Route path='/new_animalcase' component={New_animal_case} />
         </Switch>
       </Router>

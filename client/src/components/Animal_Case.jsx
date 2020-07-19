@@ -240,6 +240,8 @@ class Animal_Case extends Component {
   render() {
     return (
       <div style={sectionStyle}>
+                {localStorage.user ? (
+
         <table class='table table-striped table-active'>
           <thead>
             <tr>
@@ -335,6 +337,7 @@ class Animal_Case extends Component {
             })}
           </tbody>
         </table>
+                ) : null}
       </div>
     );
   }

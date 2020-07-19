@@ -88,9 +88,11 @@ var healthCenterSchema = new Schema({
     type: String,
     required: true,
   },
-  latlng: {
+  lat: {
     type: String,
-    required: true,
+  },
+  lng: {
+    type: String,
   },
   incharge: {
     type: String,
@@ -123,7 +125,11 @@ var outbreakSchema = new Schema({
   healthCenter: {
     type: healthCenterSchema,
   },
-  latlng: {
+  lat: {
+    type: String,
+    required: true,
+  },
+  lng: {
     type: String,
     required: true,
   },

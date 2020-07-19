@@ -27,7 +27,10 @@ var healthCenterSchema = new Schema({
     type: String,
     required: true,
   },
-  latlng: {
+  lat: {
+    type: String,
+  },
+  lng: {
     type: String,
   },
   incharge: {

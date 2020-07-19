@@ -216,7 +216,6 @@ class Animal_Case extends Component {
         total_recovered: b_d,
         total_deaths: c_d,
       };
-
       UpdateDisease(obj2)
         .then((response) => {
           console.log('Success Update');
@@ -225,7 +224,6 @@ class Animal_Case extends Component {
         .catch((err) => {
           console.log(err);
         });
-
 */
     } catch (err) {
       console.log('Server' + err);
@@ -236,6 +234,8 @@ class Animal_Case extends Component {
   render() {
     return (
       <div style={sectionStyle}>
+                        {localStorage.user ? (
+
         <table class='table table-striped table-active'>
           <thead>
             <tr>
@@ -333,6 +333,8 @@ class Animal_Case extends Component {
             })}
           </tbody>
         </table>
+        ) : null}
+
       </div>
     );
   }

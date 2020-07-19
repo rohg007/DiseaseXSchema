@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import './cars.css';
-import { Button } from 'reactstrap';
 import image1 from '../images/hc1.jpg';
 import image2 from '../images/adminpc.jpg';
 class Home extends PureComponent {
