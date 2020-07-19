@@ -279,7 +279,7 @@ class Animal_Case extends Component {
                                 <div>
                                   <input
                                     type='radio'
-                                    value='Infected'
+                                    value='infected'
                                     name='optradio'
                                   />{' '}
                                   Infected
@@ -287,7 +287,7 @@ class Animal_Case extends Component {
                                 <div>
                                   <input
                                     type='radio'
-                                    value='Recovered'
+                                    value='recovered'
                                     name='optradio'
                                   />{' '}
                                   Recovered
@@ -295,7 +295,7 @@ class Animal_Case extends Component {
                                 <div>
                                   <input
                                     type='radio'
-                                    value='Deceased'
+                                    value='deceased'
                                     name='optradio'
                                   />{' '}
                                   Deceased
