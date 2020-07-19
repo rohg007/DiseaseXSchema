@@ -4,7 +4,6 @@ import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getAdminLoggedInDetails from '../api/auth/getAdminLoggedInData.jsx';
 var sectionStyle = {
-  //backgroundImage: 'url(' + Background + ')',
   backgroundColor: 'rgb(162,128,137,0.95)',
   width: '100%',
   height: '100vh',

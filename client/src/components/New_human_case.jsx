@@ -7,7 +7,6 @@ import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addHumanCase from '../api/humanCases/posthumanCase.jsx';
 var sectionStyle = {
-  //backgroundImage: 'url(' + Background + ')',
   backgroundColor: 'rgb(162,128,137,0.95)',
   width: '100%',
   height: '100vh',
