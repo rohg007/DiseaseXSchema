@@ -49,9 +49,6 @@ class Home extends PureComponent {
               </a>
             </div>
           </div>
-          <div className='carousel-item'>
-            <img className='d-block w-100' src='...' alt='Third slide' />
-          </div>
         </div>
         <a
           className='carousel-control-prev'
