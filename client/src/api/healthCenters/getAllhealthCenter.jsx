@@ -11,7 +11,4 @@ function getAllhealthCenter() {
   });
 }
 
-
-
-
 export default getAllhealthCenter;

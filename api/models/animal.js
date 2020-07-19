@@ -9,8 +9,12 @@ var animalOwnerSchema = new Schema({
   address: {
     type: String,
   },
+  pincode: {
+    type: String,
+  },
   email: {
     type: String,
+    required: true,
   },
   contact: {
     type: String,
@@ -25,7 +29,6 @@ var livestockSchema = new Schema({
   },
   population: {
     type: Number,
-    required: true,
   },
 });
 
@@ -36,7 +39,6 @@ var vaccineSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   duration: {
     type: Number,
@@ -44,7 +46,6 @@ var vaccineSchema = new Schema({
   },
   forHuman: {
     type: String,
-    required: true,
   },
 });
 
@@ -60,8 +61,7 @@ var animalSchema = new Schema({
     type: animalOwnerSchema,
   },
   nextVaccination: {
-    type: String,
-    required: true,
+    type: Date,
   },
   vaccine: {
     type: vaccineSchema,

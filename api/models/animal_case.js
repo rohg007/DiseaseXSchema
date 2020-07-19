@@ -10,11 +10,13 @@ var animalOwnerSchema = new Schema({
     type: String,
     required: true,
   },
+  pincode: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
-    unique: true,
-    index: true,
-    sparse: true,
+    required: true,
   },
   contact: {
     type: String,
@@ -54,9 +56,8 @@ var animalSchema = new Schema({
     type: String,
     required: true,
   },
-  breed: {
-    type: String,
-    required: true,
+  livestock: {
+    type: livestockSchema,
   },
   owner: {
     type: animalOwnerSchema,
@@ -107,8 +108,6 @@ var healthCenterSchema = new Schema({
   email: {
     type: String,
     required: true,
-    index: true,
-    sparse: true,
   },
 
   avatar: {

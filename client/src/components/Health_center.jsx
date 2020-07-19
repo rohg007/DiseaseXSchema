@@ -1,10 +1,21 @@
-import React, { Component, useState } from 'react';
-import { Pie, Doughnut, Bar } from 'react-chartjs-2';
+import React, { Component } from 'react';
+import { Doughnut, Bar } from 'react-chartjs-2';
 import GetAllDiseases from '../api/diseases/getAllDiseases';
 import Background from '../images/background.jpg';
 
+//var sectionStyle = {
+  //backgroundImage: 'url(' + Background + ')',
+  //backgroundPosition: 'center',
+  //backgroundSize: 'cover',
+//};
+
 var sectionStyle = {
-  backgroundImage: 'url(' + Background + ')',
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: '#E1CDD6',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
 };
@@ -12,7 +23,7 @@ var sectionStyle = {
 class Health_center extends Component {
   state = {
     diseases: [],
-    user: '',
+    user: {},
     barChart: [],
   };
 
@@ -23,9 +34,7 @@ class Health_center extends Component {
     try {
       GetAllDiseases()
         .then((response) => {
-          let extractdata = response.data;
-          console.log(response);
-          this.setState({ diseases: extractdata });
+          this.setState({ diseases: response.data });
         })
         .catch((err) => {
           console.log(err);
@@ -86,30 +95,33 @@ class Health_center extends Component {
           </div>
 
           <div
-            class='btn-group mr-7'
+            className='btn-group mr-7'
             role='group'
             aria-label='First group'
             style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
           >
-            <a class='btn btn-large btn-dark' href='/new_humancase'>
+            <a className='btn btn-large btn-dark' href='/new_humancase'>
               NEW HUMAN CASE
             </a>
-            <a class='btn btn-large btn-dark' href='/new_animalcase'>
+            <a className='btn btn-large btn-dark' href='/new_animalcase'>
               NEW ANIMAL CASE
             </a>
-            <a class='btn btn-large btn-dark' href='/human_case'>
+            <a className='btn btn-large btn-dark' href='/human_case'>
               HUMAN CASES
             </a>
-            <a class='btn btn-large btn-dark' href='/animal_case'>
+            <a className='btn btn-large btn-dark' href='/animal_case'>
               ANIMAL CASES
             </a>
           </div>
         </div>
         <div className='row'>
           {' '}
-          {this.state.diseases.map((dise, i) => {
+          {this.state.diseases.map((dise) => {
             return (
-              <div style={{ width: '25%', height: '25%', paddingTop: '3%' }}>
+              <div
+                style={{ width: '25%', height: '25%', paddingTop: '3%' }}
+                key={dise._id}
+              >
                 <Doughnut
                   data={{
                     labels: ['Infected', 'Recoverd', 'Deaths'],

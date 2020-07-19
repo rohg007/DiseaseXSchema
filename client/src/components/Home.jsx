@@ -1,87 +1,86 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import './cars.css';
 import { Button } from 'reactstrap';
-import Login from '../images/Login.png';
+import image1 from '../images/hc1.jpg';
+import image2 from '../images/adminpc.jpg';
+class Home extends PureComponent {
+  render() {
+    return (
+      <div
+        className='container-fluid p-0 sticky-top'
+        style={{ top: '0', marginBottom: '10%', height: '30px' }}
+        id='carouselExampleControls'
+        class='carousel slide'
+        data-ride='carousel'
+      >
+        <div className='carousel-inner'>
+          <div className='carousel-item active fixed'>
+            <img
+              className='d-block w-100'
+              src={image1}
+              alt='First slide'
+              style={{ height: '641px', objectFit: 'cover' }}
+            />
+            <div class='carousel-caption d-none d-md-block black'>
+              <h4 style={{ textEmphasisColor: 'black' }}>
+                Update your health center details
+              </h4>
 
-function Home() {
-  console.log(localStorage);
-  return (
-    <div class='card-deck'>
-      <div
-        class='card'
-        body
-        inverse
-        style={{
-          marginLeft: '20%',
-          marginTop: '4%',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          borderColor: '#333',
-        }}
-      >
-        <div
-          class='card-header'
-          style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white' }}
-        >
-          <h3>DiseaseX</h3>
-        </div>
-        <div class='card-body text-center'>
-          <p class='card-text ' style={{ color: 'white' }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-      </div>
-      <div
-        class='card'
-        body
-        inverse
-        style={{
-          marginLeft: '20%',
-          marginRight: '20%',
-          marginTop: '4%',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          borderColor: '#333',
-          height: '5%',
-          width: '4%',
-        }}
-      >
-        <div class='card-header' style={{ color: 'black' }}>
-          <img
-            width='40px'
-            src='https://img.icons8.com/ios-filled/100/000000/login-rounded-right.png'
-          />
-          <strong>Login As</strong>{' '}
-        </div>
-        <div class='card-body'>
-          <Button
-            style={{ color: 'black', backgroundColor: '#5ca08a' }}
-            href='/loginPage'
-          >
-            Health Center
-          </Button>
-          <div>
-            <Button
-              style={{
-                marginTop: '20px',
-                color: 'black',
-                backgroundColor: '#5ca08a',
-              }}
-              href='/loginPageAdmin'
-            >
-              Admin
-            </Button>
+              <a className='btn btn-lg btn-dark' href='/loginPage'>
+                LOGIN
+              </a>
+            </div>
+          </div>
+          <div className='carousel-item'>
+            <img
+              className='d-block w-100'
+              src={image2}
+              alt='Second slide'
+              style={{ height: '641px', objectFit: 'cover' }}
+            />
+            <div class='carousel-caption d-none d-md-block black'>
+              <h4 style={{ textEmphasisColor: 'black' }}>
+                Appearing as an ADMIN
+              </h4>
+              <a className='btn btn-lg btn-dark' href='/loginPageAdmin'>
+                LOGIN
+              </a>
+            </div>
+          </div>
+          <div className='carousel-item'>
+            <img className='d-block w-100' src='...' alt='Third slide' />
           </div>
         </div>
+        <a
+          className='carousel-control-prev'
+          href='#carouselExampleControls'
+          role='button'
+          data-slide='prev'
+        >
+          <span
+            className='carousel-control-prev-icon'
+            aria-hidden='true'
+          ></span>
+          <span className='sr-only'>Previous</span>
+        </a>
+        <a
+          className='carousel-control-next'
+          href='#carouselExampleControls'
+          role='button'
+          data-slide='next'
+        >
+          <span
+            className='carousel-control-next-icon'
+            aria-hidden='true'
+          ></span>
+          <span className='sr-only'>Next</span>
+        </a>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Home;

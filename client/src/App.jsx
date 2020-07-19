@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import AppNavbar from './components/AppNavbar.jsx';
@@ -15,12 +14,13 @@ import LoginPageAdmin from './components/LoginPageAdmin.jsx';
 import Health_center from './components/Health_center.jsx';
 import New_human_case from './components/New_human_case';
 import New_animal_case from './components/New_animal_case';
-import ex from './components/ex';
-
 var sectionStyle = {
-  backgroundImage: 'url(' + Background + ')',
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: '#DEE4E7',
   width: '100%',
-  height: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
 };

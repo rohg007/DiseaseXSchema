@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from './loading.css';
+import './loading.css';
 
 function Loading({ loadingColor, ...props }) {
   const loadingDefault = '#ffff';

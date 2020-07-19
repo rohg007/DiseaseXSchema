@@ -81,10 +81,10 @@ route.post(
       jwt.sign(
         payload,
         config.get('jwtToken'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, name, email, contact, gravatar });
+          res.json(healthcenter);
         }
       );
     } catch (err) {
@@ -148,7 +148,7 @@ route.post(
       jwt.sign(
         payload,
         config.get('jwtToken'),
-        { expiresIn: 360000 },
+        { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
           res.json({ token, name, email, gravatar });

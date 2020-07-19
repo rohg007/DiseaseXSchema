@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 var healthCenterSchema = new Schema({
   address: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    index: true,
-    sparse: true,
   },
   password: {
     type: String,
@@ -37,6 +36,7 @@ var healthCenterSchema = new Schema({
   },
   pincode: {
     type: String,
+    required: true,
   },
   web: {
     type: String,
