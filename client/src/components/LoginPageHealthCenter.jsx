@@ -188,7 +188,7 @@ function LoginPageHealthcenter() {
                       <p className='forgot-password p-0'>
                         <span style={{ color: '#8da0a6' }}>
                           Not registered{' '}
-                          <a style={{ color: 'black' }} href='/loginPage'>
+                          <a style={{ color: 'black' }} href='/signup'>
                             sign up?
                           </a>
                         </span>

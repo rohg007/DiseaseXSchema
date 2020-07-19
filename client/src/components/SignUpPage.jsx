@@ -113,7 +113,7 @@ function SignUpPage() {
     }
   }
   return (
-    <div className='container-fluid p-0' style={sectionStyle}>
+    <div className='container-fluid p-2' style={sectionStyle}>
       {!localStorage.user ? (
         <div>
           {loading ? (
