@@ -108,10 +108,13 @@ function Admin() {
             setSubmitting(false);
           }
         })
-        .catch((error) => setOverAllError("Can't able to send sms!"));
+        .catch((error) => {
+          setOverAllError("Can't able to send sms!");
+          setSubmitting(false);
+        });
     } catch (err) {
       setOverAllError(err);
-      console.log(err);
+      setSubmitting(false);
     }
   }
   function handelAnimalCaseDetails(Case) {
