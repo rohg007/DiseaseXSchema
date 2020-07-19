@@ -4,7 +4,6 @@ import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getLoggedInDetails from '../api/auth/getloggedInHealthCenterData.jsx';
 var sectionStyle = {
-  //backgroundImage: 'url(' + Background + ')',
   backgroundColor: 'rgb(162,128,137,0.95)',
   width: '100%',
   height: '100vh',
@@ -94,7 +93,7 @@ function LoginPageHealthcenter() {
               }}
               className='d-flex align-items-center justify-content-center'
             >
-              <Loading />
+              <Loading loadingColor='#ff790e' />
             </div>
           ) : (
             <div
@@ -187,7 +186,12 @@ function LoginPageHealthcenter() {
 
                     <div className='ml-auto'>
                       <p className='forgot-password p-0'>
-                        Not registered <a href='/signup'>sign up?</a>
+                        <span style={{ color: '#8da0a6' }}>
+                          Not registered{' '}
+                          <a style={{ color: 'black' }} href='/loginPage'>
+                            sign up?
+                          </a>
+                        </span>
                       </p>
                     </div>
                   </div>

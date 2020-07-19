@@ -6,6 +6,15 @@ import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
 import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 import UpdateHumanCase from '../api/humanCases/updatehumanCase.jsx';
 import GetAllHumanCases from '../api/humanCases/getAllhumanCase.jsx';
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 function Admin() {
   React.useEffect(() => {
     let today = new Date().toLocaleDateString();
@@ -157,7 +166,7 @@ function Admin() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       <div className='p-3'>
         {loading ? (
           <div
@@ -166,7 +175,7 @@ function Admin() {
             }}
             className='d-flex align-items-center justify-content-center'
           >
-            <Loading />
+            <Loading loadingColor='#ff790e' />
           </div>
         ) : (
           <div className='container-fluid p-0'>
@@ -175,7 +184,6 @@ function Admin() {
                 <div
                   className='text-center pb-2'
                   style={{
-                    color: 'white',
                     fontSize: '20px',
                     fontWeight: '500',
                   }}

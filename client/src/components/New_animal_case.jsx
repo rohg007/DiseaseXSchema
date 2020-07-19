@@ -11,6 +11,16 @@ import addAnimalCase from '../api/animalCase/createAnimalCase.jsx';
 // Geocode.setLanguage('en');
 // Geocode.setRegion('in');
 // Geocode.enableDebug();
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
+
 function NewAnimalCase() {
   let history = useHistory();
   const [loading, setLoading] = React.useState('');
@@ -279,7 +289,7 @@ function NewAnimalCase() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       {localStorage.user ? (
         <div>
           {loading ? (
@@ -289,7 +299,7 @@ function NewAnimalCase() {
               }}
               className='d-flex align-items-center justify-content-center'
             >
-              <Loading />
+              <Loading loadingColor='#ff790e' />
             </div>
           ) : (
             <div
@@ -705,9 +715,13 @@ function NewAnimalCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a href='/animal_case'>All Cases? </a>
+                      <a style={{ color: 'black' }} href='/animal_case'>
+                        All Cases?{' '}
+                      </a>
 
-                      <a href='/new_humancase'>Add Human Case?</a>
+                      <a style={{ color: 'black' }} href='/new_humancase'>
+                        Add Human Case?
+                      </a>
                     </p>
                   </div>
                 </div>

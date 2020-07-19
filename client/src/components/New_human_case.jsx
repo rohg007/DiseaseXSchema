@@ -6,6 +6,15 @@ import Dropdown from './dropdown/Dropdown.jsx';
 import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addHumanCase from '../api/humanCases/posthumanCase.jsx';
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 
 function NewHumanCase() {
   let history = useHistory();
@@ -246,7 +255,7 @@ function NewHumanCase() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       {localStorage.user ? (
         <div>
           {loading ? (
@@ -256,7 +265,7 @@ function NewHumanCase() {
               }}
               className='d-flex align-items-center justify-content-center'
             >
-              <Loading />
+              <Loading loadingColor='#ff790e' />
             </div>
           ) : (
             <div
@@ -641,9 +650,13 @@ function NewHumanCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a href='/human_case'>All Cases? </a>
+                      <a style={{ color: 'black' }} href='/human_case'>
+                        All Cases?{' '}
+                      </a>
 
-                      <a href='/new_animalcase'>Add Animal Case?</a>
+                      <a style={{ color: 'black' }} href='/new_animalcase'>
+                        Add Animal Case?
+                      </a>
                     </p>
                   </div>
                 </div>
