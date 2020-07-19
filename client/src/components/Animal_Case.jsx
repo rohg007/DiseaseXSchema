@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
 import GetAllHealthCenters from '../api/healthCenters/getAllhealthCenter';
 import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
@@ -14,14 +14,11 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Label,
-  Input,
 } from 'reactstrap';
 
 import editImage from '../images/edit.png';
 
 var sectionStyle = {
-  //backgroundImage: 'url(' + Background + ')',
   backgroundColor: 'rgb(162,128,137,0.95)',
   width: '100%',
   height: '100vh',
@@ -102,10 +99,6 @@ class Animal_Case extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`${this.state.hcid}`);
-
-    console.log('we are here');
-    console.log(`${this.state.ide}`);
     try {
       let obj = this.state.filtereddata[this.state.ide];
       let animal = this.state.filtereddata[this.state.ide].animal;
@@ -119,30 +112,27 @@ class Animal_Case extends Component {
       console.log(diseaseName);
       try {
         GetAllDiseases()
-        .then((response) => {
-          let extractdataa = response.data;
-          console.log(response.data);
-          this.setState({
-            filtereddata1: extractdataa.filter((temp) => {
-              return temp.name === diseaseName;
-            }),
+          .then((response) => {
+            let extractdataa = response.data;
+            console.log(response.data);
+            this.setState({
+              filtereddata1: extractdataa.filter((temp) => {
+                return temp.name === diseaseName;
+              }),
+            });
+          })
+          .catch((err) => {
+            console.log(err);
           });
-        })
-        .catch((err) => {
-          console.log(err);
-        }); 
       } catch (err) {
         console.log('Server' + err);
       }
-      console.log('here');
-      console.log(`${this.state.filtereddata1[0].name}`);  
       let obj2 = this.state.filtereddata1[0];
-      
+
       let a_d = this.state.filtereddata1[0].total_affected;
       let b_d = this.state.filtereddata1[0].total_recovered;
       let c_d = this.state.filtereddata1[0].total_deaths;
-      
-      console.log(`${a} ${b} ${c}`);
+
       if (this.state.newvalue !== '') {
         if (prev === 'infected' || prev === 'Infected') {
           a--;
@@ -189,7 +179,6 @@ class Animal_Case extends Component {
           ...obj,
         };
       }
-      console.log(`${a} ${b} ${c}`);
       obj1 = {
         ...obj1,
         total_affected: a,
@@ -229,8 +218,6 @@ class Animal_Case extends Component {
         .catch((err) => {
           console.log(err);
         });
-
-
     } catch (err) {
       console.log('Server' + err);
     }
@@ -240,104 +227,103 @@ class Animal_Case extends Component {
   render() {
     return (
       <div style={sectionStyle}>
-                {localStorage.user ? (
+        {localStorage.user ? (
+          <table class='table table-striped table-active'>
+            <thead>
+              <tr>
+                <th>S.No.</th>
+                <th>Owner Name</th>
+                <th>Owner's Email</th>
+                <th>Contact No.</th>
+                <th>Disease Name</th>
+                <th>Status</th>
+                <th>Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.filtereddata.map((experience, i) => {
+                return (
+                  <tr>
+                    <th scope='row'>{i + 1}</th>
+                    <td>{experience.animal.owner.name}</td>
+                    <td>{experience.animal.owner.email}</td>
+                    <td>{experience.animal.owner.contact}</td>
+                    <td>{experience.disease.name}</td>
+                    <td>{experience.animal.status}</td>
+                    <td>
+                      <img
+                        width='10%'
+                        height='50%'
+                        src={editImage}
+                        role='button'
+                        color='dark'
+                        name={i}
+                        style={{ marginBottom: '2rem' }}
+                        onClick={this.handleClick}
+                      />
+                      <Modal
+                        isOpen={this.state.modal}
+                        toggle={this.toggle}
+                        data-id={i + 10}
+                      >
+                        <ModalHeader toggle={this.toggle}>
+                          Update the status of the animal
+                        </ModalHeader>
+                        <ModalBody>
+                          <Form>
+                            <FormGroup>
+                              <div
+                                value={this.state.value}
+                                onChange={this.onChange}
+                              >
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Infected'
+                                    name='optradio'
+                                  />{' '}
+                                  Infected
+                                </div>
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Recovered'
+                                    name='optradio'
+                                  />{' '}
+                                  Recovered
+                                </div>
+                                <div>
+                                  <input
+                                    type='radio'
+                                    value='Deceased'
+                                    name='optradio'
+                                  />{' '}
+                                  Deceased
+                                </div>
+                              </div>
 
-        <table class='table table-striped table-active'>
-          <thead>
-            <tr>
-              <th>S.No.</th>
-              <th>Owner Name</th>
-              <th>Owner's Email</th>
-              <th>Contact No.</th>
-              <th>Disease Name</th>
-              <th>Status</th>
-              <th>Update</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.filtereddata.map((experience, i) => {
-              return (
-                <tr>
-                  <th scope='row'>{i + 1}</th>
-                  <td>{experience.animal.owner.name}</td>
-                  <td>{experience.animal.owner.email}</td>
-                  <td>{experience.animal.owner.contact}</td>
-                  <td>{experience.disease.name}</td>
-                  <td>{experience.animal.status}</td>
-                  <td>
-                    <img
-                      width='10%'
-                      height='50%'
-                      src={editImage}
-                      role='button'
-                      color='dark'
-                      name={i}
-                      style={{ marginBottom: '2rem' }}
-                      onClick={this.handleClick}
-                    />
-                    <Modal
-                      isOpen={this.state.modal}
-                      toggle={this.toggle}
-                      data-id={i + 10}
-                    >
-                      <ModalHeader toggle={this.toggle}>
-                        Update the status of the animal
-                      </ModalHeader>
-                      <ModalBody>
-                        <Form>
-                          <FormGroup>
-                            <div
-                              value={this.state.value}
-                              onChange={this.onChange}
-                            >
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Infected'
-                                  name='optradio'
-                                />{' '}
-                                Infected
-                              </div>
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Recovered'
-                                  name='optradio'
-                                />{' '}
-                                Recovered
-                              </div>
-                              <div>
-                                <input
-                                  type='radio'
-                                  value='Deceased'
-                                  name='optradio'
-                                />{' '}
-                                Deceased
-                              </div>
-                            </div>
-
-                            <Button
-                              key={i}
-                              onClick={this.handleButtonClicked}
-                              color='dark'
-                              style={{ marginTop: '2rem' }}
-                              onClick={this.handleSubmit}
-                              name={i}
-                              block
-                            >
-                              Update
-                            </Button>
-                          </FormGroup>
-                        </Form>
-                      </ModalBody>
-                    </Modal>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-                ) : null}
+                              <Button
+                                key={i}
+                                onClick={this.handleButtonClicked}
+                                color='dark'
+                                style={{ marginTop: '2rem' }}
+                                onClick={this.handleSubmit}
+                                name={i}
+                                block
+                              >
+                                Update
+                              </Button>
+                            </FormGroup>
+                          </Form>
+                        </ModalBody>
+                      </Modal>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : null}
       </div>
     );
   }

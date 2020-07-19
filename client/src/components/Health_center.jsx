@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import GetAllDiseases from '../api/diseases/getAllDiseases';
 
-
 var sectionStyle = {
   backgroundColor: '#E1CDD6',
   width: '100%',

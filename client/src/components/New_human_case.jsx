@@ -651,9 +651,13 @@ function NewHumanCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a href='/human_case'>All Cases? </a>
+                      <a style={{ color: 'black' }} href='/human_case'>
+                        All Cases?{' '}
+                      </a>
 
-                      <a href='/new_animalcase'>Add Animal Case?</a>
+                      <a style={{ color: 'black' }} href='/new_animalcase'>
+                        Add Animal Case?
+                      </a>
                     </p>
                   </div>
                 </div>

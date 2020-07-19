@@ -519,7 +519,12 @@ function SignUpPage() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password p-0'>
-                      Already registered <a href='/loginPage'>sign in?</a>
+                      <span style={{ color: '#8da0a6' }}>
+                        Already registered{' '}
+                        <a style={{ color: 'black' }} href='/loginPage'>
+                          sign in?
+                        </a>
+                      </span>
                     </p>
                   </div>
                 </div>
