@@ -25,6 +25,7 @@ function Admin() {
           setAnimalCases(
             responses.data.filter((response) => today === response.date)
           );
+          setOverAllError('');
         })
         .catch((error) => {
           setOverAllError('Unable to fetch Data');
@@ -40,6 +41,7 @@ function Admin() {
           setHumanCases(
             responses.data.filter((response) => today === response.date)
           );
+          setOverAllError('');
           setLoading(false);
         })
         .catch((error) => {
@@ -94,7 +96,7 @@ function Admin() {
                     (humanCase) => humanCase._id !== Case._id
                   )
                 );
-
+                setOverAllError('');
                 setSubmitting(false);
               })
               .catch((error) => {
@@ -175,12 +177,23 @@ function Admin() {
             }}
             className='d-flex align-items-center justify-content-center'
           >
-            <Loading loadingColor='#ff790e' />
+            <Loading />
           </div>
         ) : (
           <div className='container-fluid p-0'>
             <div className='row no-gutters '>
               <div className='col-xl-6 pr-3'>
+                {overAllError !== '' ? (
+                  <div
+                    className='p-3 text-center'
+                    style={{
+                      color: '#ec547a',
+                      fontWeight: '500',
+                    }}
+                  >
+                    {overAllError}
+                  </div>
+                ) : null}
                 <div
                   className='text-center pb-2'
                   style={{
@@ -195,7 +208,7 @@ function Admin() {
                   style={{ border: '0', borderRadius: '10px' }}
                 >
                   <table
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', borderRadius: '10px' }}
                     className='table table-hover table-condensed table-striped table-responsive table-bordered'
                   >
                     <thead>
@@ -248,7 +261,6 @@ function Admin() {
                 <div
                   className='text-center pb-2'
                   style={{
-                    color: 'white',
                     fontSize: '20px',
                     fontWeight: '500',
                   }}
@@ -260,7 +272,7 @@ function Admin() {
                   style={{ border: '0', borderRadius: '10px' }}
                 >
                   <table
-                    style={{ width: '100%' }}
+                    style={{ width: '100%', borderRadius: '10px' }}
                     className='table table-hover table-condensed table-striped table-responsive table-bordered'
                   >
                     <thead>

@@ -93,7 +93,7 @@ function LoginPageHealthcenter() {
               }}
               className='d-flex align-items-center justify-content-center'
             >
-              <Loading loadingColor='#ff790e' />
+              <Loading />
             </div>
           ) : (
             <div

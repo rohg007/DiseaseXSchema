@@ -17,6 +17,7 @@ class Health_center extends Component {
     diseases: [],
     user: {},
     barChart: [],
+    overAllError: '',
   };
 
   componentDidMount() {
@@ -26,19 +27,30 @@ class Health_center extends Component {
     try {
       GetAllDiseases()
         .then((response) => {
-          this.setState({ diseases: response.data });
+          this.setState({ diseases: response.data, overAllError: '' });
         })
         .catch((err) => {
-          console.log(err);
+          this.setState({ overAllError: "Can't able to fetch!" });
         });
     } catch (err) {
-      console.log('Server' + err);
+      this.setState({ overAllError: 'Server Error!' });
     }
   }
 
   render() {
     return (
       <div style={sectionStyle}>
+        {this.state.overAllError !== '' ? (
+          <div
+            className='p-3 text-center'
+            style={{
+              color: '#ec547a',
+              fontWeight: '500',
+            }}
+          >
+            {this.state.overAllError}
+          </div>
+        ) : null}
         <div className='row'>
           <div
             style={{
