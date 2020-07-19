@@ -15,9 +15,9 @@ import LoginPageAdmin from './components/LoginPageAdmin.jsx';
 import Health_center from './components/Health_center.jsx';
 import New_human_case from './components/New_human_case';
 import New_animal_case from './components/New_animal_case';
-
 var sectionStyle = {
-  backgroundImage: 'url(' + Background + ')',
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: '#DEE4E7',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',

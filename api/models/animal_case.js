@@ -129,6 +129,9 @@ var healthCenterSchema = new Schema({
   },
   address: {
     type: String,
+  },
+  address: {
+    type: String,
     required: true,
   },
   incharge: {

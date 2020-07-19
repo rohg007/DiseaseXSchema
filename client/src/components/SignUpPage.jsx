@@ -3,6 +3,16 @@ import { useHistory } from 'react-router-dom';
 import SignUp from '../api/auth/signUpApi.jsx';
 import Loading from './loading/loading.jsx';
 import './signup.css';
+var sectionStyle = {
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 
 function SignUpPage() {
   let history = useHistory();
@@ -104,7 +114,7 @@ function SignUpPage() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       {!localStorage.user ? (
         <div>
           {loading ? (
@@ -125,7 +135,7 @@ function SignUpPage() {
                 marginLeft: '20%',
                 marginRight: '20%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.45)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

@@ -3,6 +3,16 @@ import LoginAdmin from '../api/auth/loginAdmin.jsx';
 import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getAdminLoggedInDetails from '../api/auth/getAdminLoggedInData.jsx';
+var sectionStyle = {
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 
 function LoginPageAdmin() {
   let history = useHistory();
@@ -73,7 +83,7 @@ function LoginPageAdmin() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       {!localStorage.user ? (
         <div>
           {loading ? (
@@ -95,7 +105,7 @@ function LoginPageAdmin() {
                 marginRight: '20%',
                 marginTop: '5%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.45)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

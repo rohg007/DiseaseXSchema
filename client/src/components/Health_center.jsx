@@ -3,8 +3,19 @@ import { Doughnut, Bar } from 'react-chartjs-2';
 import GetAllDiseases from '../api/diseases/getAllDiseases';
 import Background from '../images/background.jpg';
 
+//var sectionStyle = {
+  //backgroundImage: 'url(' + Background + ')',
+  //backgroundPosition: 'center',
+  //backgroundSize: 'cover',
+//};
+
 var sectionStyle = {
-  backgroundImage: 'url(' + Background + ')',
+  //backgroundImage: 'url(' + Background + ')',
+  backgroundColor: '#E1CDD6',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
 };
