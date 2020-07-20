@@ -3,6 +3,15 @@ import Login from '../api/auth/loginHealthCenter.jsx';
 import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getLoggedInDetails from '../api/auth/getloggedInHealthCenterData.jsx';
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 
 function LoginPageHealthcenter() {
   let history = useHistory();
@@ -74,7 +83,7 @@ function LoginPageHealthcenter() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-0' style={sectionStyle}>
       {!localStorage.user ? (
         <div>
           {loading ? (
@@ -96,7 +105,7 @@ function LoginPageHealthcenter() {
                 marginRight: '20%',
                 marginTop: '5%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.45)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >
@@ -177,7 +186,12 @@ function LoginPageHealthcenter() {
 
                     <div className='ml-auto'>
                       <p className='forgot-password p-0'>
-                        Not registered <a href='/signup'>sign up?</a>
+                        <span style={{ color: '#8da0a6' }}>
+                          Not registered{' '}
+                          <a style={{ color: 'black' }} href='/signup'>
+                            sign up?
+                          </a>
+                        </span>
                       </p>
                     </div>
                   </div>

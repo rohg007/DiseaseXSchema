@@ -6,6 +6,20 @@ import Dropdown from './dropdown/Dropdown.jsx';
 import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addAnimalCase from '../api/animalCase/createAnimalCase.jsx';
+// import Geocode from 'react-geocode';
+// Geocode.setApiKey('AIzaSyAlmuRLyMRm69-3f4TprA3MWAX5IJm1CT8');
+// Geocode.setLanguage('en');
+// Geocode.setRegion('in');
+// Geocode.enableDebug();
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 
 function NewAnimalCase() {
   let history = useHistory();
@@ -61,6 +75,7 @@ function NewAnimalCase() {
       }));
     }
   }, []);
+
   function handleSubmit(event) {
     event.preventDefault();
     if (
@@ -79,6 +94,15 @@ function NewAnimalCase() {
       }));
       return;
     }
+    // Geocode.fromAddress(address).then(
+    //   (response) => {
+    //     const { lat, lng } = response.results[0].geometry.location;
+    //     console.log(lat, lng);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
     if (disease === 'Other') {
       if (!diseaseName || !symptoms || !vaccines || !duration) {
         setError((error) => ({
@@ -97,11 +121,30 @@ function NewAnimalCase() {
       healthcenter.total_deaths = healthcenter.total_deaths + 1;
     }
     localStorage.setItem('user', JSON.stringify(healthcenter));
+
     if (disease !== 'Other') {
       let tempDisease = diseases.filter(
         (diseaseVal) => diseaseVal.name === disease
       );
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0');
+      let yyyy = today.getFullYear();
+      let day = parseInt(dd) + tempDisease[0].vaccine[0].duration;
+      let month = parseInt(mm);
+      let year = parseInt(yyyy);
 
+      if (day > 30) {
+        month = month + parseInt(day / 30);
+        day = day % 30;
+
+        if (month > 12) {
+          year = year + parseInt(month / 12);
+          month = month % 12;
+        }
+      }
+      let date =
+        month.toString() + '/' + day.toString() + '/' + year.toString();
       let animalcase = {
         animal: {
           status: status,
@@ -111,7 +154,7 @@ function NewAnimalCase() {
             address: address,
             pincode: pinCode,
             email: email,
-            contact: contact,
+            contact: '+91' + contact,
           },
           vaccine: {
             name: tempDisease[0].vaccine[0].name,
@@ -120,13 +163,14 @@ function NewAnimalCase() {
         },
         healthCenter: healthcenter,
         disease: tempDisease[0],
+        date: date,
       };
 
       try {
         setLoading(true);
-        UpdateHealthCenter(healthcenter)
+        addAnimalCase(animalcase)
           .then((response) => {
-            addAnimalCase(animalcase)
+            UpdateHealthCenter(healthcenter)
               .then((response) => {
                 history.push(`/animal_case`);
                 setLoading(false);
@@ -158,8 +202,30 @@ function NewAnimalCase() {
         name: diseaseName,
         symptoms: symptoms,
         livestock: [{ breed: breed }],
+        total_affected: Math.floor(10000 + Math.random() * 90000),
+        total_deaths: Math.floor(10000 + Math.random() * 90000),
+        total_recovered: Math.floor(10000 + Math.random() * 90000),
+
         vaccine: [{ name: vaccines, duration: parseInt(duration) }],
       };
+      let today = new Date();
+      let dd = String(today.getDate()).padStart(2, '0');
+      let mm = String(today.getMonth() + 1).padStart(2, '0');
+      let yyyy = today.getFullYear();
+      let day = parseInt(dd) + parseInt(duration);
+      let month = parseInt(mm);
+      let year = parseInt(yyyy);
+      if (day > 30) {
+        month = month + parseInt(day / 30);
+        day = day % 30;
+
+        if (month > 12) {
+          year = year + parseInt(month / 12);
+          month = month % 12;
+        }
+      }
+      let date =
+        month.toString() + '/' + day.toString() + '/' + year.toString();
       let animalcase = {
         animal: {
           status: status,
@@ -169,21 +235,22 @@ function NewAnimalCase() {
             address: address,
             pincode: pinCode,
             email: email,
-            contact: contact,
+            contact: '+91' + contact,
           },
           vaccine: { name: vaccines, duration: parseInt(duration) },
         },
         healthCenter: healthcenter,
         disease: newDisease,
+        date: date,
       };
 
       try {
         setLoading(true);
-        UpdateHealthCenter(healthcenter)
+        addAnimalCase(animalcase)
           .then((response) => {
-            addAnimalCase(animalcase)
+            addDisease(newDisease)
               .then((response) => {
-                addDisease(newDisease)
+                UpdateHealthCenter(healthcenter)
                   .then((response) => {
                     history.push(`/animal_case`);
                     setLoading(false);
@@ -222,7 +289,7 @@ function NewAnimalCase() {
     }
   }
   return (
-    <div className='container-fluid p-0'>
+    <div className='container-fluid p-2' style={sectionStyle}>
       {localStorage.user ? (
         <div>
           {loading ? (
@@ -318,7 +385,7 @@ function NewAnimalCase() {
                       <div className='form-group'>
                         <label htmlFor='contact'>Owner Contact</label>
                         <input
-                          type='number'
+                          type='text'
                           required
                           id='contact'
                           autoComplete='off'
@@ -332,7 +399,7 @@ function NewAnimalCase() {
                             }));
                           }}
                           onBlur={() =>
-                            contact[0] === 0
+                            contact[0] === '0'
                               ? setError((error) => ({
                                   ...error,
                                   contactError:
@@ -375,17 +442,18 @@ function NewAnimalCase() {
                           address.length === 0
                             ? setError((error) => ({
                                 ...error,
-                                addressError: 'Cannot be empty',
+                                addressError: 'Please enter residential Info',
                               }))
                             : null
                         }
-                      />
+                      />{' '}
+                      {error.addressError ? (
+                        <div className='errorLabel'>
+                          <p className='p-0'>{error.addressError}</p>
+                        </div>
+                      ) : null}
                     </div>
-                    {error.addressError ? (
-                      <div className='errorLabel'>
-                        <p className='p-0'>{error.addressError}</p>
-                      </div>
-                    ) : null}
+
                     <div className='form-group'>
                       <label htmlFor='pinCode'>Pin Code</label>
                       <input
@@ -647,9 +715,13 @@ function NewAnimalCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a href='/animal_case'>All Cases? </a>
+                      <a style={{ color: 'black' }} href='/animal_case'>
+                        All Cases?{' '}
+                      </a>
 
-                      <a href='/new_humancase'>Add Human Case?</a>
+                      <a style={{ color: 'black' }} href='/new_humancase'>
+                        Add Human Case?
+                      </a>
                     </p>
                   </div>
                 </div>

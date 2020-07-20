@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var config = require('config');
 var authSignInRouter = require('./routes/authSignIn');
+var messageSend = require('./routes/messageSend');
 var SignUpRouter = require('./routes/authSignUp');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -19,8 +21,10 @@ var diseaseRouter = require('./routes/diseaseRouter');
 var humanCaseRouter = require('./routes/humanCaseRouter');
 var outbreakRouter = require('./routes/outbreakRouter');
 var cors = require('cors');
-var app = express();
+
+const app = express();
 app.use(cors());
+
 const url = config.get('mongoUrl');
 try {
   mongoose.connect(
@@ -35,7 +39,8 @@ try {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -51,6 +56,7 @@ app.use('/animalOwners', animalOwnerRouter);
 app.use('/auth', authSignInRouter);
 app.use('/signup', SignUpRouter);
 app.use('/animals', animalRouter);
+app.use('/api', messageSend);
 app.use('/animalCases', animalCaseRouter);
 app.use('/diseases', diseaseRouter);
 app.use('/humanCases', humanCaseRouter);

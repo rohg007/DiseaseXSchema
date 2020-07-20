@@ -8,10 +8,20 @@ function AppNavBar() {
   let history = useHistory();
   const [logoutoption, setLogoutOption] = React.useState(true);
   return (
-    <div className='container-fluid p-0 sticky-top'>
-      <Navbar color='dark' dark expand='lm' className='mb-5 '>
+    <div
+      className='container-fluid p-0 sticky-top'
+      style={{ marginBottom: '-50px', zIndex: '2' }}
+    >
+      <Navbar
+        expand='lm'
+        className='mb-5 '
+        style={{ backgroundColor: 'black', text: 'white' }}
+      >
         <Container>
-          <NavbarBrand href={localStorage.user ? '/health_center' : '/'}>
+          <NavbarBrand
+            href={localStorage.user ? '/health_center' : '/'}
+            style={{ text: 'white' }}
+          >
             DiseaseX
           </NavbarBrand>
 
