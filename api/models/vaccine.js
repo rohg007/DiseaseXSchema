@@ -8,7 +8,6 @@ var vaccineSchema = new Schema({
   },
   scientificName: {
     type: String,
-    required: true,
   },
   duration: {
     type: Number,
@@ -16,7 +15,6 @@ var vaccineSchema = new Schema({
   },
   forHuman: {
     type: String,
-    required: true,
   },
 });
 
