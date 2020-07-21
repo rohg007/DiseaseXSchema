@@ -174,6 +174,8 @@ function NewHumanCase() {
       let newDisease = {
         name: diseaseName,
         symptoms: symptoms,
+        morbidity: Math.floor(100 + Math.random() * 900),
+        mortality: Math.floor(100 + Math.random() * 900),
         total_affected: Math.floor(1000 + Math.random() * 9000),
         total_deaths: Math.floor(100 + Math.random() * 900),
         total_recovered: Math.floor(1000 + Math.random() * 9000),

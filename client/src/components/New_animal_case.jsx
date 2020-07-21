@@ -202,6 +202,8 @@ function NewAnimalCase() {
         name: diseaseName,
         symptoms: symptoms,
         livestock: [{ breed: breed }],
+        morbidity: Math.floor(100 + Math.random() * 900),
+        mortality: Math.floor(100 + Math.random() * 900),
         total_affected: Math.floor(10000 + Math.random() * 90000),
         total_deaths: Math.floor(10000 + Math.random() * 90000),
         total_recovered: Math.floor(10000 + Math.random() * 90000),
