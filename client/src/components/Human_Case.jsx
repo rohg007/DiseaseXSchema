@@ -198,7 +198,7 @@ function Human_Case() {
       }
     }
     let tempHumanCases = [];
-    humanCases.map((Case) => {
+    humanCases.forEach((Case) => {
       if (Case._id === humanCase._id) {
         tempHumanCases.push(updateHumanCase);
       } else {
