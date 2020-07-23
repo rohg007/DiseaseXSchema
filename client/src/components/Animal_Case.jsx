@@ -217,7 +217,7 @@ function Animal_Case() {
       }
     }
     let tempAnimalCase = [];
-    animalCases.map((Case) => {
+    animalCases.forEach((Case) => {
       if (Case._id === animalCase._id) {
         tempAnimalCase.push(updateAnimalCase);
       } else {

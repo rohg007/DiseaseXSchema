@@ -19,8 +19,12 @@ function AppNavBar() {
       >
         <Container>
           <NavbarBrand
-            href={localStorage.user ? '/health_center' : '/'}
-            style={{ text: 'white' }}
+            style={{ color: 'white', cursor: 'pointer' }}
+            onClick={() =>
+              localStorage.user
+                ? history.push('/health_center')
+                : history.push('/')
+            }
           >
             DiseaseX
           </NavbarBrand>
