@@ -12,8 +12,7 @@ import addAnimalCase from '../api/animalCase/createAnimalCase.jsx';
 // Geocode.setRegion('in');
 // Geocode.enableDebug();
 var sectionStyle = {
-  //backgroundImage: 'url(' + Background + ')',
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -203,6 +202,8 @@ function NewAnimalCase() {
         name: diseaseName,
         symptoms: symptoms,
         livestock: [{ breed: breed }],
+        morbidity: Math.floor(100 + Math.random() * 900),
+        mortality: Math.floor(100 + Math.random() * 900),
         total_affected: Math.floor(10000 + Math.random() * 90000),
         total_deaths: Math.floor(10000 + Math.random() * 90000),
         total_recovered: Math.floor(10000 + Math.random() * 90000),
@@ -312,7 +313,7 @@ function NewAnimalCase() {
                 marginRight: '20%',
                 justifyContent: 'center',
 
-                backgroundColor: 'rgba(0,0,0,0.40)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

@@ -6,6 +6,15 @@ import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
 import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 import UpdateHumanCase from '../api/humanCases/updatehumanCase.jsx';
 import GetAllHumanCases from '../api/humanCases/getAllhumanCase.jsx';
+var sectionStyle = {
+  backgroundColor: 'rgb(162,128,137,0.95)',
+  width: '100%',
+  height: '100vh',
+  overflowY: 'auto',
+  overflowX: 'auto',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+};
 function Admin() {
   React.useEffect(() => {
     let today = new Date().toLocaleDateString();
@@ -16,6 +25,7 @@ function Admin() {
           setAnimalCases(
             responses.data.filter((response) => today === response.date)
           );
+          setOverAllError('');
         })
         .catch((error) => {
           setOverAllError('Unable to fetch Data');
@@ -31,6 +41,7 @@ function Admin() {
           setHumanCases(
             responses.data.filter((response) => today === response.date)
           );
+          setOverAllError('');
           setLoading(false);
         })
         .catch((error) => {
@@ -85,7 +96,7 @@ function Admin() {
                     (humanCase) => humanCase._id !== Case._id
                   )
                 );
-
+                setOverAllError('');
                 setSubmitting(false);
               })
               .catch((error) => {
@@ -97,10 +108,13 @@ function Admin() {
             setSubmitting(false);
           }
         })
-        .catch((error) => setOverAllError("Can't able to send sms!"));
+        .catch((error) => {
+          setOverAllError("Can't able to send sms!");
+          setSubmitting(false);
+        });
     } catch (err) {
       setOverAllError(err);
-      console.log(err);
+      setSubmitting(false);
     }
   }
   function handelAnimalCaseDetails(Case) {
@@ -153,160 +167,176 @@ function Admin() {
         .catch((error) => setOverAllError("Can't able to send sms!"));
     } catch (err) {
       setOverAllError(err);
-      console.log(err);
     }
   }
+  console.log(localStorage);
   return (
-    <div className='container-fluid p-0'>
-      <div className='p-3'>
-        {loading ? (
-          <div
-            style={{
-              height: '80vh',
-            }}
-            className='d-flex align-items-center justify-content-center'
-          >
-            <Loading />
-          </div>
-        ) : (
-          <div className='container-fluid p-0'>
-            <div className='row no-gutters '>
-              <div className='col-xl-6 pr-3'>
-                <div
-                  className='text-center pb-2'
-                  style={{
-                    color: 'white',
-                    fontSize: '20px',
-                    fontWeight: '500',
-                  }}
-                >
-                  Animal Patients
-                </div>
-                <div
-                  className='bg-white'
-                  style={{ border: '0', borderRadius: '10px' }}
-                >
-                  <table
-                    style={{ width: '100%' }}
-                    className='table table-hover table-condensed table-striped table-responsive table-bordered'
+    <div className='container-fluid p-0' style={sectionStyle}>
+      {localStorage.user ? (
+        <div className='p-3'>
+          {loading ? (
+            <div
+              style={{
+                height: '80vh',
+              }}
+              className='d-flex align-items-center justify-content-center'
+            >
+              <Loading />
+            </div>
+          ) : (
+            <div className='container-fluid p-0'>
+              <div className='row no-gutters '>
+                <div className='col-xl-6 pr-3'>
+                  {overAllError !== '' ? (
+                    <div
+                      className='p-3 text-center'
+                      style={{
+                        color: '#ec547a',
+                        fontWeight: '500',
+                      }}
+                    >
+                      {overAllError}
+                    </div>
+                  ) : null}
+                  <div
+                    className='text-center pb-2'
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '500',
+                    }}
                   >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Status</th>
-                        <th>vaccine</th>
-                        <th />
-                      </tr>
-                    </thead>
+                    Animal Patients
+                  </div>
+                  <div
+                    className='bg-white'
+                    style={{ border: '0', borderRadius: '10px' }}
+                  >
                     {animalCases.length !== 0 ? (
-                      <tbody>
-                        {animalCases.map((animalCase) => {
-                          return (
-                            <tr key={`${animalCase._id}`}>
-                              <td>{animalCase.animal.owner.name}</td>
-                              <td>{animalCase.animal.owner.email}</td>
-                              <td>{animalCase.animal.owner.contact}</td>
-                              <td>{animalCase.animal.status}</td>
-                              <td>{animalCase.animal.vaccine.name}</td>
+                      <table
+                        style={{ width: '100%', borderRadius: '10px' }}
+                        className='table table-hover table-condensed table-striped table-responsive table-bordered'
+                      >
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>vaccine</th>
+                            <th />
+                          </tr>
+                        </thead>
 
-                              <td>
-                                <div>
-                                  <div
-                                    style={{ width: '100px' }}
-                                    className='btn btn-primary btn-block'
-                                    onClick={() =>
-                                      handelAnimalCaseDetails(animalCase)
-                                    }
-                                  >
-                                    NOT SENT
+                        <tbody>
+                          {animalCases.map((animalCase) => {
+                            return (
+                              <tr key={`${animalCase._id}`}>
+                                <td>{animalCase.animal.owner.name}</td>
+                                <td>{animalCase.animal.owner.email}</td>
+                                <td>{animalCase.animal.owner.contact}</td>
+                                <td>{animalCase.animal.status}</td>
+                                <td>{animalCase.animal.vaccine.name}</td>
+
+                                <td>
+                                  <div>
+                                    <div
+                                      style={{ width: '100px' }}
+                                      className='btn btn-primary btn-block'
+                                      onClick={() =>
+                                        handelAnimalCaseDetails(animalCase)
+                                      }
+                                    >
+                                      NOT SENT
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
                     ) : (
-                      <div className='d-flex align-items-center justify-content-center'>
-                        No more Active Animal patients to notify!
+                      <div className='d-flex align-items-center justify-content-center '>
+                        <div className='p-3'>
+                          No more Active Animal patients to notify!
+                        </div>
                       </div>
                     )}
-                  </table>
+                  </div>
                 </div>
-              </div>
-              <div className='col-xl-6'>
-                <div
-                  className='text-center pb-2'
-                  style={{
-                    color: 'white',
-                    fontSize: '20px',
-                    fontWeight: '500',
-                  }}
-                >
-                  Human Patients
-                </div>
-                <div
-                  className='bg-white'
-                  style={{ border: '0', borderRadius: '10px' }}
-                >
-                  <table
-                    style={{ width: '100%' }}
-                    className='table table-hover table-condensed table-striped table-responsive table-bordered'
+                <div className='col-xl-6'>
+                  <div
+                    className='text-center pb-2'
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '500',
+                    }}
                   >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
-                        <th>Status</th>
-                        <th>vaccine</th>
-                        <th />
-                      </tr>
-                    </thead>
+                    Human Patients
+                  </div>
+                  <div
+                    className='bg-white'
+                    style={{ border: '0', borderRadius: '10px' }}
+                  >
+                    {' '}
                     {humanCases.length !== 0 ? (
-                      <tbody>
-                        {humanCases.map((humanCase) => {
-                          return (
-                            <tr key={`${humanCase._id}`}>
-                              <td>{humanCase.patientName}</td>
-                              <td>{humanCase.patientEmail}</td>
-                              <td>{humanCase.patientContact}</td>
-                              <td>{humanCase.status}</td>
-                              <td>{humanCase.disease.vaccine[0].name}</td>
+                      <table
+                        style={{ width: '100%', borderRadius: '10px' }}
+                        className='table table-hover table-condensed table-striped table-responsive table-bordered'
+                      >
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>vaccine</th>
+                            <th />
+                          </tr>
+                        </thead>
 
-                              <td>
-                                <div>
-                                  <div
-                                    style={{ width: '100px' }}
-                                    className='btn btn-primary btn-block'
-                                    onClick={() =>
-                                      handelHumanCaseDetails(humanCase)
-                                    }
-                                  >
-                                    NOT SENT
+                        <tbody>
+                          {humanCases.map((humanCase) => {
+                            return (
+                              <tr key={`${humanCase._id}`}>
+                                <td>{humanCase.patientName}</td>
+                                <td>{humanCase.patientEmail}</td>
+                                <td>{humanCase.patientContact}</td>
+                                <td>{humanCase.status}</td>
+                                <td>{humanCase.disease.vaccine[0].name}</td>
+
+                                <td>
+                                  <div>
+                                    <div
+                                      style={{ width: '100px' }}
+                                      className='btn btn-primary btn-block'
+                                      onClick={() =>
+                                        handelHumanCaseDetails(humanCase)
+                                      }
+                                    >
+                                      NOT SENT
+                                    </div>
                                   </div>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
                     ) : (
                       <div className='d-flex align-items-center justify-content-center'>
-                        <div>
+                        <div className='p-3'>
                           Oops! No more Active Human patients to notify!
                         </div>
                       </div>
                     )}
-                  </table>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      ) : null}
       {
         <Modal
           isOpen={submitting}

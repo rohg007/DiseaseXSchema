@@ -9,10 +9,9 @@ class Home extends PureComponent {
   render() {
     return (
       <div
-        className='container-fluid p-0 sticky-top'
-        style={{ top: '0', marginBottom: '10%', height: '30px' }}
+        className='container-fluid p-0 sticky-top carousel slide'
+        style={{ top: '0', marginBottom: '10%', height: '30px', zIndex: '0' }}
         id='carouselExampleControls'
-        class='carousel slide'
         data-ride='carousel'
       >
         <div className='carousel-inner'>
@@ -21,9 +20,9 @@ class Home extends PureComponent {
               className='d-block w-100'
               src={image1}
               alt='First slide'
-              style={{ height: '644px', objectFit: 'cover' }}
+              style={{ height: '671px', objectFit: 'cover' }}
             />
-            <div class='carousel-caption d-none d-md-block black'>
+            <div className='carousel-caption d-none d-md-block black'>
               <h4 style={{ textEmphasisColor: 'black' }}>
                 Update your health center details
               </h4>
@@ -38,9 +37,9 @@ class Home extends PureComponent {
               className='d-block w-100'
               src={image2}
               alt='Second slide'
-              style={{ height: '641px', objectFit: 'cover' }}
+              style={{ height: '671px', objectFit: 'cover' }}
             />
-            <div class='carousel-caption d-none d-md-block black'>
+            <div className='carousel-caption d-none d-md-block black'>
               <h4 style={{ textEmphasisColor: 'black' }}>
                 Appearing as an ADMIN
               </h4>

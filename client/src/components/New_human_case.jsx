@@ -7,7 +7,7 @@ import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addHumanCase from '../api/humanCases/posthumanCase.jsx';
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -174,6 +174,8 @@ function NewHumanCase() {
       let newDisease = {
         name: diseaseName,
         symptoms: symptoms,
+        morbidity: Math.floor(100 + Math.random() * 900),
+        mortality: Math.floor(100 + Math.random() * 900),
         total_affected: Math.floor(1000 + Math.random() * 9000),
         total_deaths: Math.floor(100 + Math.random() * 900),
         total_recovered: Math.floor(1000 + Math.random() * 9000),
@@ -276,7 +278,7 @@ function NewHumanCase() {
                 marginLeft: '20%',
                 marginRight: '20%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.40)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

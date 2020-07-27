@@ -4,15 +4,28 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import { Navbar, NavbarBrand, Container } from 'reactstrap';
 
-
 function AppNavBar() {
   let history = useHistory();
   const [logoutoption, setLogoutOption] = React.useState(true);
   return (
-    <div className='container-fluid p-0 sticky-top' style={{marginBottom:'-50px'}}>
-      <Navbar  expand='lm' className='mb-5 ' style={{backgroundColor :'black', text: 'white'}}>
+    <div
+      className='container-fluid p-0 sticky-top'
+      style={{ marginBottom: '-50px', zIndex: '2' }}
+    >
+      <Navbar
+        expand='lm'
+        className='mb-5 bg-dark'
+        style={{ text: 'white' }}
+      >
         <Container>
-          <NavbarBrand href={localStorage.user ? '/health_center' : '/'} style={{text: 'white'}}>
+          <NavbarBrand
+            style={{ color: 'white', cursor: 'pointer' }}
+            onClick={() =>
+              localStorage.user
+                ? history.push('/health_center')
+                : history.push('/')
+            }
+          >
             DiseaseX
           </NavbarBrand>
 
