@@ -7,7 +7,7 @@ import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 import UpdateHumanCase from '../api/humanCases/updatehumanCase.jsx';
 import GetAllHumanCases from '../api/humanCases/getAllhumanCase.jsx';
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#f2e6cb',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
