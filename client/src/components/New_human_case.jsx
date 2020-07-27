@@ -7,7 +7,7 @@ import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addHumanCase from '../api/humanCases/posthumanCase.jsx';
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -278,7 +278,7 @@ function NewHumanCase() {
                 marginLeft: '20%',
                 marginRight: '20%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.40)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

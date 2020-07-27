@@ -4,7 +4,7 @@ import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getLoggedInDetails from '../api/auth/getloggedInHealthCenterData.jsx';
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -186,7 +186,7 @@ function LoginPageHealthcenter() {
 
                     <div className='ml-auto'>
                       <p className='forgot-password p-0'>
-                        <span style={{ color: '#8da0a6' }}>
+                        <span style={{ color: 'black' }}>
                           Not registered{' '}
                           <a style={{ color: 'black' }} href='/signup'>
                             sign up?

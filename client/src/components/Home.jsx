@@ -20,7 +20,7 @@ class Home extends PureComponent {
               className='d-block w-100'
               src={image1}
               alt='First slide'
-              style={{ height: '644px', objectFit: 'cover' }}
+              style={{ height: '671px', objectFit: 'cover' }}
             />
             <div className='carousel-caption d-none d-md-block black'>
               <h4 style={{ textEmphasisColor: 'black' }}>
@@ -37,7 +37,7 @@ class Home extends PureComponent {
               className='d-block w-100'
               src={image2}
               alt='Second slide'
-              style={{ height: '641px', objectFit: 'cover' }}
+              style={{ height: '671px', objectFit: 'cover' }}
             />
             <div className='carousel-caption d-none d-md-block black'>
               <h4 style={{ textEmphasisColor: 'black' }}>

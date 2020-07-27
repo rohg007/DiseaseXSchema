@@ -4,7 +4,7 @@ import Loading from './loading/loading.jsx';
 import GetAllDiseases from '../api/diseases/getAllDiseases';
 
 var sectionStyle = {
-  backgroundColor: '#E1CDD6',
+  backgroundColor: '#f2e6cb',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
