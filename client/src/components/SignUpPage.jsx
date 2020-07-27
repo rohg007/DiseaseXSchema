@@ -4,7 +4,7 @@ import SignUp from '../api/auth/signUpApi.jsx';
 import Loading from './loading/loading.jsx';
 import './signup.css';
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -518,7 +518,7 @@ function SignUpPage() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password p-0'>
-                      <span style={{ color: '#8da0a6' }}>
+                      <span style={{ color: 'black' }}>
                         Already registered{' '}
                         <a style={{ color: 'black' }} href='/loginPage'>
                           sign in?

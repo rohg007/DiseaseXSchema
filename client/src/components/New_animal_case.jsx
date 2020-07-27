@@ -12,7 +12,7 @@ import addAnimalCase from '../api/animalCase/createAnimalCase.jsx';
 // Geocode.setRegion('in');
 // Geocode.enableDebug();
 var sectionStyle = {
-  backgroundColor: 'rgb(162,128,137,0.95)',
+  backgroundColor: '#e0cda6',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -313,7 +313,7 @@ function NewAnimalCase() {
                 marginRight: '20%',
                 justifyContent: 'center',
 
-                backgroundColor: 'rgba(0,0,0,0.40)',
+                backgroundColor: 'rgba(0,0,0,0.30)',
                 borderColor: '#333',
               }}
             >

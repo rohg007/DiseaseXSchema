@@ -12,11 +12,7 @@ function AppNavBar() {
       className='container-fluid p-0 sticky-top'
       style={{ marginBottom: '-50px', zIndex: '2' }}
     >
-      <Navbar
-        expand='lm'
-        className='mb-5 '
-        style={{ backgroundColor: 'black', text: 'white' }}
-      >
+      <Navbar expand='lm' className='mb-5 bg-dark' style={{ text: 'white' }}>
         <Container>
           <NavbarBrand
             style={{ color: 'white', cursor: 'pointer' }}
