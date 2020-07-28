@@ -137,6 +137,8 @@ function NewHumanCase() {
         healthCenter: healthcenter,
         disease: tempDisease[0],
         date: date,
+        lat: '26.' + Math.floor(100000 + Math.random() * 900000).toString(),
+        lng: '75.' + Math.floor(100000 + Math.random() * 900000).toString(),
       };
 
       try {
@@ -173,13 +175,23 @@ function NewHumanCase() {
     } else {
       let newDisease = {
         name: diseaseName,
+        scientificName: "Sorry can't find one",
         symptoms: symptoms,
-        morbidity: Math.floor(100 + Math.random() * 900),
-        mortality: Math.floor(100 + Math.random() * 900),
+        precaution: 'No Suggested precautions',
+        morbidity: Math.floor(10 + Math.random() * 90),
+        mortality: Math.floor(10 + Math.random() * 90),
         total_affected: Math.floor(1000 + Math.random() * 9000),
         total_deaths: Math.floor(100 + Math.random() * 900),
         total_recovered: Math.floor(1000 + Math.random() * 9000),
-        vaccine: [{ name: vaccines, duration: parseInt(duration) }],
+        livestock: [{ breed: 'Mammalia', population: 1370000000 }],
+        vaccine: [
+          {
+            name: vaccines,
+            scientificName: "Sorry can't find one",
+            duration: parseInt(duration),
+            forHuman: 'true',
+          },
+        ],
       };
       let today = new Date();
       let dd = String(today.getDate()).padStart(2, '0');
@@ -210,6 +222,8 @@ function NewHumanCase() {
         healthCenter: healthcenter,
         disease: newDisease,
         date: date,
+        lat: '26.' + Math.floor(100000 + Math.random() * 900000).toString(),
+        lng: '75.' + Math.floor(100000 + Math.random() * 900000).toString(),
       };
 
       try {

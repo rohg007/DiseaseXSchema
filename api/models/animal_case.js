@@ -64,6 +64,7 @@ var animalSchema = new Schema({
   },
   nextVaccination: {
     type: Date,
+    default: Date.now(),
   },
   vaccine: {
     type: vaccineSchema,
