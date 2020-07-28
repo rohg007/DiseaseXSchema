@@ -78,6 +78,7 @@ function NewAnimalCase() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    let population = Math.floor(10000 + Math.random() * 90000);
     if (
       !ownerName ||
       !email ||
@@ -148,7 +149,10 @@ function NewAnimalCase() {
       let animalcase = {
         animal: {
           status: status,
-          livestock: { breed: breed },
+          livestock: {
+            breed: breed,
+            population: population,
+          },
           owner: {
             name: ownerName,
             address: address,
@@ -158,12 +162,16 @@ function NewAnimalCase() {
           },
           vaccine: {
             name: tempDisease[0].vaccine[0].name,
+            scientificName: "Sorry can't able to find one!",
             duration: tempDisease[0].vaccine[0].duration,
+            forHuman: 'false',
           },
         },
         healthCenter: healthcenter,
         disease: tempDisease[0],
         date: date,
+        lat: '26.' + Math.floor(100000 + Math.random() * 900000).toString(),
+        lng: '75.' + Math.floor(100000 + Math.random() * 900000).toString(),
       };
 
       try {
@@ -200,15 +208,29 @@ function NewAnimalCase() {
     } else {
       let newDisease = {
         name: diseaseName,
+        precautions: 'no suggested precautions',
+        scientificName: "Can't ableto find one!",
         symptoms: symptoms,
-        livestock: [{ breed: breed }],
-        morbidity: Math.floor(100 + Math.random() * 900),
-        mortality: Math.floor(100 + Math.random() * 900),
+        livestock: [
+          {
+            breed: breed,
+            population: population,
+          },
+        ],
+        morbidity: Math.floor(10 + Math.random() * 90),
+        mortality: Math.floor(10 + Math.random() * 90),
         total_affected: Math.floor(10000 + Math.random() * 90000),
         total_deaths: Math.floor(10000 + Math.random() * 90000),
         total_recovered: Math.floor(10000 + Math.random() * 90000),
 
-        vaccine: [{ name: vaccines, duration: parseInt(duration) }],
+        vaccine: [
+          {
+            name: vaccines,
+            scientificName: "Can't ableto find one!",
+            duration: parseInt(duration),
+            forHuman: 'false',
+          },
+        ],
       };
       let today = new Date();
       let dd = String(today.getDate()).padStart(2, '0');
@@ -231,7 +253,7 @@ function NewAnimalCase() {
       let animalcase = {
         animal: {
           status: status,
-          livestock: { breed: breed },
+          livestock: { breed: breed, population: population },
           owner: {
             name: ownerName,
             address: address,
@@ -239,11 +261,18 @@ function NewAnimalCase() {
             email: email,
             contact: '+91' + contact,
           },
-          vaccine: { name: vaccines, duration: parseInt(duration) },
+          vaccine: {
+            name: vaccines,
+            scientificName: "Can't ableto find one!",
+            duration: parseInt(duration),
+            forHuman: 'false',
+          },
         },
         healthCenter: healthcenter,
         disease: newDisease,
         date: date,
+        lat: '26.' + Math.floor(100000 + Math.random() * 900000).toString(),
+        lng: '75.' + Math.floor(100000 + Math.random() * 900000).toString(),
       };
 
       try {
