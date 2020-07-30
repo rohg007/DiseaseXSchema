@@ -177,7 +177,7 @@ function NewHumanCase() {
         name: diseaseName,
         scientificName: "Sorry can't find one",
         symptoms: symptoms,
-        precaution: 'No Suggested precautions',
+        precautions: 'No Suggested precautions',
         morbidity: Math.floor(10 + Math.random() * 90),
         mortality: Math.floor(10 + Math.random() * 90),
         total_affected: Math.floor(1000 + Math.random() * 9000),
