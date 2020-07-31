@@ -93,7 +93,7 @@ function LoginPageAdmin() {
               }}
               className='d-flex align-items-center justify-content-center'
             >
-              <Loading />
+              <Loading loadingColor='#ff790e' />
             </div>
           ) : (
             <div
