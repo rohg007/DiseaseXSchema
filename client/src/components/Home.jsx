@@ -22,7 +22,7 @@ class Home extends PureComponent {
               alt='First slide'
               style={{ height: '671px', objectFit: 'cover' }}
             />
-            <div className='carousel-caption d-none d-md-block black'>
+            <div className='carousel-caption d-none d-md-block black pb-5'>
               <h4 style={{ textEmphasisColor: 'black' }}>
                 Update your health center details
               </h4>
@@ -39,7 +39,7 @@ class Home extends PureComponent {
               alt='Second slide'
               style={{ height: '671px', objectFit: 'cover' }}
             />
-            <div className='carousel-caption d-none d-md-block black'>
+            <div className='carousel-caption d-none d-md-block black pb-5'>
               <h4 style={{ textEmphasisColor: 'black' }}>
                 Appearing as an ADMIN
               </h4>
