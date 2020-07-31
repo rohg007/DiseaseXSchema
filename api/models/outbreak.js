@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 var vaccineSchema = new Schema({
   name: {
@@ -134,5 +135,5 @@ var outbreakSchema = new Schema({
     type: Number,
   },
 });
-
+outbreakSchema.plugin(uniqueValidator);
 module.exports = mongoose.model('Outbreak', outbreakSchema);
