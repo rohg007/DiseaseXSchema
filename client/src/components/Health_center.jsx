@@ -67,123 +67,129 @@ class Health_center extends Component {
                 {this.state.overAllError}
               </div>
             ) : null}
-            <div className='row'>
-              <div
-                style={{
-                  width: '50%',
-                  height: '50%',
-                  justifyContent: 'center',
-                  paddingLeft: '5%',
-                }}
-              >
-                <Bar
-                  data={{
-                    labels: ['Infected', 'Recovered', 'Deaths'],
-                    datasets: [
-                      {
-                        label: 'People',
-                        borderWidth: 2,
-                        backgroundColor: [
-                          'rgba(0, 0, 255, 0.5)',
-                          'rgba(0, 255, 0, 0.5)',
-                          'rgba(255, 0, 0, 0.5)',
-                        ],
-                        hoverBackgroundColor: ['blue', 'green', 'red'],
-                        position: 'center',
-                        data: [
-                          this.state.user.total_affected,
-                          this.state.user.total_recovered,
-                          this.state.user.total_deaths,
-                        ],
+            <div className='container-fluid p-0'>
+              <div className='row'>
+                <div
+                  style={{
+                    height: '50%',
+                    justifyContent: 'center',
+                    paddingLeft: '5%',
+                  }}
+                  className='col-sm-6'
+                >
+                  <Bar
+                    data={{
+                      labels: ['Infected', 'Recovered', 'Deaths'],
+                      datasets: [
+                        {
+                          label: 'People',
+                          borderWidth: 2,
+                          backgroundColor: [
+                            'rgba(0, 0, 255, 0.5)',
+                            'rgba(0, 255, 0, 0.5)',
+                            'rgba(255, 0, 0, 0.5)',
+                          ],
+                          hoverBackgroundColor: ['blue', 'green', 'red'],
+                          position: 'center',
+                          data: [
+                            this.state.user.total_affected,
+                            this.state.user.total_recovered,
+                            this.state.user.total_deaths,
+                          ],
+                        },
+                      ],
+                    }}
+                    options={{
+                      title: {
+                        display: true,
+                        position: 'top',
+                        text: `HEALTH CENTER : ${this.state.user.name} Status`,
+                        fontSize: '20',
+                        fontColor: 'black',
                       },
-                    ],
-                  }}
-                  options={{
-                    title: {
-                      display: true,
-                      position: 'top',
-                      text: `HEALTH CENTER : ${this.state.user.name} status`,
-                      fontSize: '20',
-                      fontColor: 'black',
-                    },
-                    legend: {
-                      display: false,
-                      position: 'right',
-                    },
-                  }}
-                />
-              </div>
-
-              <div
-                className='btn-group mr-7'
-                role='group'
-                aria-label='First group'
-                style={{ paddingLeft: '8%', paddingTop: '5%', height: '2%' }}
-              >
-                <a className='btn btn-large btn-dark' href='/new_humancase'>
-                  NEW HUMAN CASE
-                </a>
-                <a className='btn btn-large btn-dark' href='/new_animalcase'>
-                  NEW ANIMAL CASE
-                </a>
-                <a className='btn btn-large btn-dark' href='/human_case'>
-                  HUMAN CASES
-                </a>
-                <a className='btn btn-large btn-dark' href='/animal_case'>
-                  ANIMAL CASES
-                </a>
+                      legend: {
+                        display: false,
+                        position: 'right',
+                      },
+                    }}
+                  />
+                </div>
               </div>
             </div>
-            <div className='row'>
-              {' '}
-              {this.state.diseases.map((dise) => {
-                return (
-                  <div
-                    style={{ width: '25%', height: '25%', paddingTop: '3%' }}
-                    key={dise._id}
-                  >
-                    <Doughnut
-                      data={{
-                        labels: ['Infected', 'Recoverd', 'Deaths'],
-                        datasets: [
-                          {
-                            label: 'Rainfall',
-                            backgroundColor: [
-                              'rgba(0, 0, 255, 0.7)',
-                              'rgba(0, 255, 0, 0.7)',
-                              'rgba(255, 0, 0, 0.7)',
+            <div className='container-fluid p-0'>
+              <div className='row p-4'>
+                <div
+                  className='btn-group'
+                  role='group'
+                  aria-label='First group'
+                  style={{ paddingLeft: '5%', height: '2%' }}
+                >
+                  <a className='btn btn-large btn-dark' href='/new_humancase'>
+                    NEW HUMAN CASE
+                  </a>
+                  <a className='btn btn-large btn-dark' href='/new_animalcase'>
+                    NEW ANIMAL CASE
+                  </a>
+                  <a className='btn btn-large btn-dark' href='/human_case'>
+                    HUMAN CASES
+                  </a>
+                  <a className='btn btn-large btn-dark' href='/animal_case'>
+                    ANIMAL CASES
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className='container-fluid p-0'>
+              <div className='row'>
+                {' '}
+                {this.state.diseases.map((dise) => {
+                  return (
+                    <div className='col-md-3 col-sm-6' key={dise._id}>
+                      <div style={{ paddingTop: '3%' }}>
+                        <Doughnut
+                          data={{
+                            labels: ['Infected', 'Recoverd', 'Deaths'],
+                            datasets: [
+                              {
+                                label: 'Rainfall',
+                                backgroundColor: [
+                                  'rgba(0, 0, 255, 0.7)',
+                                  'rgba(0, 255, 0, 0.7)',
+                                  'rgba(255, 0, 0, 0.7)',
+                                ],
+                                hoverBackgroundColor: ['blue', 'green', 'red'],
+                                data: [
+                                  dise.total_affected,
+                                  dise.total_recovered,
+                                  dise.total_deaths,
+                                ],
+                              },
                             ],
-                            hoverBackgroundColor: ['blue', 'green', 'red'],
-                            data: [
-                              dise.total_affected,
-                              dise.total_recovered,
-                              dise.total_deaths,
-                            ],
-                          },
-                        ],
-                      }}
-                      options={{
-                        title: {
-                          display: true,
-                          text: dise.name,
-                          fontColor: 'black',
-                          fontSize: 15,
-                          position: 'top',
-                        },
-                        legend: {
-                          display: true,
-                          fontColor: 'black',
-                          fontSize: '2',
-                          position: 'right',
-                        },
-                        labels: {
-                          fontColor: 'black',
-                        },
-                      }}
-                    />
-                  </div>
-                );
-              })}
+                          }}
+                          options={{
+                            title: {
+                              display: true,
+                              text: dise.name,
+                              fontColor: 'black',
+                              fontSize: 15,
+                              position: 'top',
+                            },
+                            legend: {
+                              display: true,
+                              fontColor: 'black',
+                              fontSize: '2',
+                              position: 'right',
+                            },
+                            labels: {
+                              fontColor: 'black',
+                            },
+                          }}
+                        />{' '}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
