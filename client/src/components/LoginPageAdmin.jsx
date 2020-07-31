@@ -3,8 +3,9 @@ import LoginAdmin from '../api/auth/loginAdmin.jsx';
 import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getAdminLoggedInDetails from '../api/auth/getAdminLoggedInData.jsx';
+import im from '../images/adminpc.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundImage: `url(${im})`,
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -104,17 +105,17 @@ function LoginPageAdmin() {
                 marginRight: '20%',
                 marginTop: '5%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.30)',
+                backgroundColor: 'rgba(0,0,0,0.65)',
                 borderColor: '#333',
               }}
             >
               <div className='card-header'>
-                <h3>Admin Sign In</h3>
+                <h3 style={{color:'white'}}>Admin Sign In</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
                 <div className='card-body'>
                   <div className='form-group'>
-                    <label htmlFor='email'>Email address</label>
+                    <label htmlFor='email' style={{color:'white'}}>Email address</label>
                     <input
                       type='email'
                       required
@@ -141,7 +142,7 @@ function LoginPageAdmin() {
                   </div>
 
                   <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
+                    <label style={{color:'white'}} htmlFor='password'>Password</label>
                     <input
                       type='password'
                       id='password'
@@ -182,6 +183,21 @@ function LoginPageAdmin() {
                         Login
                       </button>
                     </div>
+                    <div className='mr-auto'>
+                      
+                      <p className='forgot-password pt-1'>
+                          <span>
+                          <a
+                            style={{ color: 'white', fontSize: '14px' }}
+                            href='/loginPage'
+                          >
+                            Login As Health Center?
+                          </a>
+                          </span>
+                          
+                      </p>
+                    </div>
+
                   </div>
                 </div>
               </form>

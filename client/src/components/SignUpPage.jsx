@@ -3,8 +3,10 @@ import { useHistory } from 'react-router-dom';
 import SignUp from '../api/auth/signUpApi.jsx';
 import Loading from './loading/loading.jsx';
 import './signup.css';
+
+import im from '../images/hc1.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundImage: `url(${im})`,
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -136,18 +138,18 @@ function SignUpPage() {
                 marginLeft: '20%',
                 marginRight: '20%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.30)',
+                backgroundColor: 'rgba(0,0,0,0.60)',
                 borderColor: '#333',
               }}
             >
               <div className='card-header'>
-                <h3>Sign Up</h3>
+                <h3 style={{color:'white'}}>Sign Up</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
                 <div className='card-body'>
                   <div className='d-flex align-items-center'>
                     <div className='form-group pr-3' style={{ width: '50%' }}>
-                      <label htmlFor='name'>Health Center name</label>
+                      <label htmlFor='name' style={{color:'white'}}>Health Center name</label>
                       <input
                         type='text'
                         id='name'
@@ -174,7 +176,7 @@ function SignUpPage() {
                     </div>
 
                     <div className='form-group' style={{ width: '50%' }}>
-                      <label htmlFor='email'>Email address</label>
+                      <label htmlFor='email' style={{color:'white'}}>Email address</label>
                       <input
                         type='email'
                         required
@@ -202,7 +204,7 @@ function SignUpPage() {
                   </div>
                   <div className='d-flex align-items-center'>
                     <div className='form-group pr-3' style={{ width: '50%' }}>
-                      <label htmlFor='password'>Password</label>
+                      <label style={{color:'white'}} htmlFor='password'>Password</label>
                       <input
                         type='password'
                         id='password'
@@ -232,7 +234,7 @@ function SignUpPage() {
                       </div>
                     </div>
                     <div className='form-group' style={{ width: '50%' }}>
-                      <label htmlFor='confirmpassword'>Confirm Password</label>
+                      <label style={{color:'white'}} htmlFor='confirmpassword'>Confirm Password</label>
                       <input
                         type='password'
                         id='confirmpassword'
@@ -264,7 +266,7 @@ function SignUpPage() {
                   </div>
                   <div className='d-flex align-items-center justify-content-center'>
                     <div className='form-group pr-3' style={{ width: '75%' }}>
-                      <label htmlFor='address'>Address</label>
+                      <label style={{color:'white'}} htmlFor='address'>Address</label>
                       <input
                         type='text'
                         id='address'
@@ -292,7 +294,7 @@ function SignUpPage() {
                       </div>
                     </div>
                     <div className='form-group'>
-                      <label htmlFor='pinCode'>Pin Code</label>
+                      <label style={{color:'white'}} htmlFor='pinCode'>Pin Code</label>
                       <input
                         type='text'
                         id='pinCode'
@@ -323,7 +325,7 @@ function SignUpPage() {
                   <div className='d-flex align-items-center justify-content-center'>
                     <div className='flex-fill pr-3'>
                       <div className='form-group'>
-                        <label htmlFor='contactNumber'>Contact</label>
+                        <label style={{color:'white'}} htmlFor='contactNumber'>Contact</label>
                         <input
                           type='number'
                           id='contactNumber'
@@ -361,7 +363,7 @@ function SignUpPage() {
                     </div>
                     <div className='flex-fill pr-3'>
                       <div className='form-group'>
-                        <label htmlFor='incharge'>In Charge</label>
+                        <label style={{color:'white'}} htmlFor='incharge'>In Charge</label>
                         <input
                           type='text'
                           id='incharge'
@@ -392,7 +394,7 @@ function SignUpPage() {
                     </div>
                     <div className='flex-fill '>
                       <div className='form-group'>
-                        <label htmlFor='web'>Web Link</label>
+                        <label style={{color:'white'}} htmlFor='web'>Web Link</label>
                         <input
                           type='text'
                           id='web'
@@ -409,7 +411,7 @@ function SignUpPage() {
                   <div className='d-flex align-items-center justify-content-center'>
                     <div className='flex-fill pr-3'>
                       <div className='form-group'>
-                        <label htmlFor='totalAffected'>Affected</label>
+                        <label style={{color:'white'}} htmlFor='totalAffected'>Affected</label>
                         <input
                           type='number'
                           id='totalAffected'
@@ -440,7 +442,7 @@ function SignUpPage() {
                     </div>
                     <div className='flex-fill pr-3'>
                       <div className='form-group'>
-                        <label htmlFor='totalRecovered'>Recovered</label>
+                        <label style={{color:'white'}} htmlFor='totalRecovered'>Recovered</label>
                         <input
                           type='number'
                           id='totalRecovered'
@@ -471,7 +473,7 @@ function SignUpPage() {
                     </div>
                     <div className='flex-fill'>
                       <div className='form-group'>
-                        <label htmlFor='totalDeaths'>Deaths</label>
+                        <label style={{color:'white'}} htmlFor='totalDeaths'>Deaths</label>
                         <input
                           type='number'
                           id='totalDeaths'
@@ -523,7 +525,7 @@ function SignUpPage() {
                       <span style={{ color: 'black' }}>
                         Already registered{' '}
                         <a
-                          style={{ color: 'blue', fontSize: '14px' }}
+                          style={{ color: 'white', fontSize: '14px' }}
                           href='/loginPage'
                         >
                           Sign in?
