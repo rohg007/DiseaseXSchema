@@ -111,12 +111,14 @@ function LoginPageHealthcenter() {
               }}
             >
               <div className='card-header'>
-                <h3 style={{color:'white'}}>Health Center Sign In</h3>
+                <h3 style={{ color: 'white' }}>Health Center Sign In</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
                 <div className='card-body'>
                   <div className='form-group'>
-                    <label htmlFor='email' style={{color:'white'}}>Email address</label>
+                    <label htmlFor='email' style={{ color: 'white' }}>
+                      Email address
+                    </label>
                     <input
                       type='email'
                       required
@@ -143,7 +145,9 @@ function LoginPageHealthcenter() {
                   </div>
 
                   <div className='form-group'>
-                    <label htmlFor='password' style={{color:'white'}}>Password</label>
+                    <label htmlFor='password' style={{ color: 'white' }}>
+                      Password
+                    </label>
                     <input
                       type='password'
                       id='password'
@@ -178,17 +182,22 @@ function LoginPageHealthcenter() {
                     <div className='ml-auto'>
                       <button
                         type='submit'
-                        style={{ width: '150px' }}
+                        style={{ width: '165px' }}
                         className='btn btn-primary btn-block'
                       >
                         Login
                       </button>
                     </div>
                     <div className='ml-auto'>
-                      
                       <p className='forgot-password pt-1'>
-                        <span style={{ color: 'black' }}>
-                          Not registered{' '}
+                        <span>
+                          <a
+                            className='pr-2'
+                            style={{ color: 'white', fontSize: '14px' }}
+                            href='/loginPageAdmin'
+                          >
+                            Login As Admin?
+                          </a>
                           <a
                             style={{ color: 'white', fontSize: '14px' }}
                             href='/signup'
@@ -196,20 +205,6 @@ function LoginPageHealthcenter() {
                             Sign up?
                           </a>
                         </span>
-                      </p>
-                    </div>
-                    <div className='mr-auto'>
-                      
-                      <p className='forgot-password pt-1'>
-                          <span>
-                          <a
-                            style={{ color: 'white', fontSize: '14px' }}
-                            href='/loginPageAdmin'
-                          >
-                            Login As Admin?
-                          </a>
-                          </span>
-                          
                       </p>
                     </div>
                   </div>

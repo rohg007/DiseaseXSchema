@@ -110,12 +110,14 @@ function LoginPageAdmin() {
               }}
             >
               <div className='card-header'>
-                <h3 style={{color:'white'}}>Admin Sign In</h3>
+                <h3 style={{ color: 'white' }}>Admin Sign In</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
                 <div className='card-body'>
                   <div className='form-group'>
-                    <label htmlFor='email' style={{color:'white'}}>Email address</label>
+                    <label htmlFor='email' style={{ color: 'white' }}>
+                      Email address
+                    </label>
                     <input
                       type='email'
                       required
@@ -142,7 +144,9 @@ function LoginPageAdmin() {
                   </div>
 
                   <div className='form-group'>
-                    <label style={{color:'white'}} htmlFor='password'>Password</label>
+                    <label style={{ color: 'white' }} htmlFor='password'>
+                      Password
+                    </label>
                     <input
                       type='password'
                       id='password'
@@ -183,21 +187,18 @@ function LoginPageAdmin() {
                         Login
                       </button>
                     </div>
-                    <div className='mr-auto'>
-                      
+                    <div className='ml-auto'>
                       <p className='forgot-password pt-1'>
-                          <span>
+                        <span>
                           <a
                             style={{ color: 'white', fontSize: '14px' }}
                             href='/loginPage'
                           >
                             Login As Health Center?
                           </a>
-                          </span>
-                          
+                        </span>
                       </p>
                     </div>
-
                   </div>
                 </div>
               </form>

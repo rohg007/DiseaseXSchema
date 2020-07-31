@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import AppNavbar from './components/AppNavbar.jsx';
-import Home from './components/Home.jsx';
 import AllHealthCenters from './components/allHealthCenters.jsx';
 import Animal_Case from './components/Animal_Case.jsx';
 import Human_Case from './components/Human_Case.jsx';
