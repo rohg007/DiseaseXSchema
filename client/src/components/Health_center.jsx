@@ -43,6 +43,7 @@ class Health_center extends Component {
   }
 
   render() {
+    let user = JSON.parse(localStorage.getItem('user'));
     return (
       <div className='container-fluid p-0' style={sectionStyle}>
         {this.state.loading ? (
@@ -68,53 +69,57 @@ class Health_center extends Component {
               </div>
             ) : null}
             <div className='container-fluid p-0'>
-              <div className='row'>
-                <div
-                  style={{
-                    height: '50%',
-                    justifyContent: 'center',
-                    paddingLeft: '5%',
-                  }}
-                  className='col-sm-6'
-                >
-                  <Bar
-                    data={{
-                      labels: ['Infected', 'Recovered', 'Deaths'],
-                      datasets: [
-                        {
-                          label: 'People',
-                          borderWidth: 2,
-                          backgroundColor: [
-                            'rgba(0, 0, 255, 0.5)',
-                            'rgba(0, 255, 0, 0.5)',
-                            'rgba(255, 0, 0, 0.5)',
-                          ],
-                          hoverBackgroundColor: ['blue', 'green', 'red'],
-                          position: 'center',
-                          data: [
-                            this.state.user.total_affected,
-                            this.state.user.total_recovered,
-                            this.state.user.total_deaths,
-                          ],
+              {user.email === 'admin@gmail.com' ? (
+                ''
+              ) : (
+                <div className='row'>
+                  <div
+                    style={{
+                      height: '50%',
+                      justifyContent: 'center',
+                      paddingLeft: '5%',
+                    }}
+                    className='col-sm-6'
+                  >
+                    <Bar
+                      data={{
+                        labels: ['Infected', 'Recovered', 'Deaths'],
+                        datasets: [
+                          {
+                            label: 'People',
+                            borderWidth: 2,
+                            backgroundColor: [
+                              'rgba(0, 0, 255, 0.5)',
+                              'rgba(0, 255, 0, 0.5)',
+                              'rgba(255, 0, 0, 0.5)',
+                            ],
+                            hoverBackgroundColor: ['blue', 'green', 'red'],
+                            position: 'center',
+                            data: [
+                              this.state.user.total_affected,
+                              this.state.user.total_recovered,
+                              this.state.user.total_deaths,
+                            ],
+                          },
+                        ],
+                      }}
+                      options={{
+                        title: {
+                          display: true,
+                          position: 'top',
+                          text: `HEALTH CENTER : ${this.state.user.name} Status`,
+                          fontSize: '20',
+                          fontColor: 'black',
                         },
-                      ],
-                    }}
-                    options={{
-                      title: {
-                        display: true,
-                        position: 'top',
-                        text: `HEALTH CENTER : ${this.state.user.name} Status`,
-                        fontSize: '20',
-                        fontColor: 'black',
-                      },
-                      legend: {
-                        display: false,
-                        position: 'right',
-                      },
-                    }}
-                  />
+                        legend: {
+                          display: false,
+                          position: 'right',
+                        },
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className='container-fluid p-0'>
               <div className='row p-4'>
@@ -124,18 +129,41 @@ class Health_center extends Component {
                   aria-label='First group'
                   style={{ paddingLeft: '5%', height: '2%' }}
                 >
-                  <a className='btn btn-large btn-dark' href='/new_humancase'>
-                    NEW HUMAN CASE
-                  </a>
-                  <a className='btn btn-large btn-dark' href='/new_animalcase'>
-                    NEW ANIMAL CASE
-                  </a>
+                  {user.email === 'admin@gmail.com' ? (
+                    <a
+                      className='btn btn-large btn-dark'
+                      href='/allhealthcenters'
+                    >
+                      HEALTH CENTERS
+                    </a>
+                  ) : (
+                    <div>
+                      <a
+                        className='btn btn-large btn-dark'
+                        href='/new_humancase'
+                      >
+                        NEW HUMAN CASE
+                      </a>
+                      <a
+                        className='btn btn-large btn-dark'
+                        href='/new_animalcase'
+                      >
+                        NEW ANIMAL CASE
+                      </a>
+                    </div>
+                  )}
+
                   <a className='btn btn-large btn-dark' href='/human_case'>
                     HUMAN CASES
                   </a>
                   <a className='btn btn-large btn-dark' href='/animal_case'>
                     ANIMAL CASES
                   </a>
+                  {user.email === 'admin@gmail.com' ? (
+                    <a className='btn btn-large btn-dark' href='/admin'>
+                      NOTIFY ANIMAL OWNERS
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>

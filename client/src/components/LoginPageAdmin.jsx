@@ -188,7 +188,9 @@ function LoginPageAdmin() {
             </div>
           )}
         </div>
-      ) : null}
+      ) : (
+        history.push('/health_center')
+      )}
     </div>
   );
 }

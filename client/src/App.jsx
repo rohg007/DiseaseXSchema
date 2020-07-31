@@ -5,6 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import AppNavbar from './components/AppNavbar.jsx';
 import Home from './components/Home.jsx';
+import AllHealthCenters from './components/allHealthCenters.jsx';
 import Animal_Case from './components/Animal_Case.jsx';
 import Human_Case from './components/Human_Case.jsx';
 import SignUpPage from './components/SignUpPage.jsx';
@@ -39,6 +40,7 @@ function App() {
           <Route path='/health_center' component={Health_center} />
           <Route path='/new_humancase' component={New_human_case} />
           <Route path='/admin' component={Admin} />
+          <Route path='/allhealthcenters' component={AllHealthCenters} />
           <Route path='/new_animalcase' component={New_animal_case} />
         </Switch>
       </Router>

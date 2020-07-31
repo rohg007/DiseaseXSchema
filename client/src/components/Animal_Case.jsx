@@ -39,11 +39,15 @@ function Animal_Case() {
       let user = JSON.parse(localStorage.getItem('user'));
       GetAllAnimalCases()
         .then((responses) => {
-          setAnimalCases(
-            responses.data.filter(
-              (animalCase) => user.email === animalCase.healthCenter.email
-            )
-          );
+          if (user.email === 'admin@gmail.com') {
+            setAnimalCases(responses.data);
+          } else {
+            setAnimalCases(
+              responses.data.filter(
+                (animalCase) => user.email === animalCase.healthCenter.email
+              )
+            );
+          }
 
           setOverAllError('');
           setLoading(false);
@@ -300,7 +304,12 @@ function Animal_Case() {
                   <th>Contact No.</th>
                   <th>Disease Name</th>
                   <th>Status</th>
-                  <th>Update</th>
+                  {JSON.parse(localStorage.getItem('user')).email ===
+                  'admin@gmail.com' ? (
+                    ''
+                  ) : (
+                    <th>Update</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -313,79 +322,84 @@ function Animal_Case() {
                       <td>{animalCase.animal.owner.contact}</td>
                       <td>{animalCase.disease.name}</td>
                       <td>{animalCase.animal.status}</td>
-                      <td>
-                        <img
-                          alt='Loading...'
-                          width='10%'
-                          height='50%'
-                          src={editImage}
-                          role='button'
-                          color='dark'
-                          name={i}
-                          style={{ marginBottom: '2rem' }}
-                          onClick={() => {
-                            setId(i);
-                            setModal(true);
-                          }}
-                        />
-                        <Modal isOpen={modal} data-id={i + 10}>
-                          <ModalHeader toggle={() => setModal(!modal)}>
-                            Update the status of the animal
-                          </ModalHeader>
-                          <ModalBody>
-                            <Form>
-                              <FormGroup>
-                                <div>
+                      {JSON.parse(localStorage.getItem('user')).email ===
+                      'admin@gmail.com' ? (
+                        ''
+                      ) : (
+                        <td>
+                          <img
+                            alt='Loading...'
+                            width='10%'
+                            height='50%'
+                            src={editImage}
+                            role='button'
+                            color='dark'
+                            name={i}
+                            style={{ marginBottom: '2rem' }}
+                            onClick={() => {
+                              setId(i);
+                              setModal(true);
+                            }}
+                          />
+                          <Modal isOpen={modal} data-id={i + 10}>
+                            <ModalHeader toggle={() => setModal(!modal)}>
+                              Update the status of the animal
+                            </ModalHeader>
+                            <ModalBody>
+                              <Form>
+                                <FormGroup>
                                   <div>
-                                    <input
-                                      type='radio'
-                                      value='infected'
-                                      name='optradio'
-                                      onChange={() =>
-                                        setStatusValue('infected')
-                                      }
-                                    />{' '}
-                                    Infected
+                                    <div>
+                                      <input
+                                        type='radio'
+                                        value='infected'
+                                        name='optradio'
+                                        onChange={() =>
+                                          setStatusValue('infected')
+                                        }
+                                      />{' '}
+                                      Infected
+                                    </div>
+                                    <div>
+                                      <input
+                                        type='radio'
+                                        value='recovered'
+                                        name='optradio'
+                                        onChange={() =>
+                                          setStatusValue('recovered')
+                                        }
+                                      />{' '}
+                                      Recovered
+                                    </div>
+                                    <div>
+                                      <input
+                                        type='radio'
+                                        value='deceased'
+                                        name='optradio'
+                                        onChange={() =>
+                                          setStatusValue('deceased')
+                                        }
+                                      />{' '}
+                                      Deceased
+                                    </div>
                                   </div>
-                                  <div>
-                                    <input
-                                      type='radio'
-                                      value='recovered'
-                                      name='optradio'
-                                      onChange={() =>
-                                        setStatusValue('recovered')
-                                      }
-                                    />{' '}
-                                    Recovered
-                                  </div>
-                                  <div>
-                                    <input
-                                      type='radio'
-                                      value='deceased'
-                                      name='optradio'
-                                      onChange={() =>
-                                        setStatusValue('deceased')
-                                      }
-                                    />{' '}
-                                    Deceased
-                                  </div>
-                                </div>
 
-                                <Button
-                                  key={i}
-                                  color='dark'
-                                  style={{ marginTop: '2rem' }}
-                                  onClick={handleSubmit}
-                                  name={i}
-                                  block
-                                >
-                                  Update
-                                </Button>
-                              </FormGroup>
-                            </Form>
-                          </ModalBody>
-                        </Modal>
-                      </td>
+                                  <Button
+                                    key={i}
+                                    color='dark'
+                                    style={{ marginTop: '2rem' }}
+                                    onClick={handleSubmit}
+                                    name={i}
+                                    block
+                                  >
+                                    Update
+                                  </Button>
+                                </FormGroup>
+                              </Form>
+                            </ModalBody>
+                          </Modal>
+                        </td>
+                      )}
                     </tr>
                   );
                 })}
