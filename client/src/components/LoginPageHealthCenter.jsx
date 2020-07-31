@@ -185,11 +185,14 @@ function LoginPageHealthcenter() {
                     </div>
 
                     <div className='ml-auto'>
-                      <p className='forgot-password p-0'>
+                      <p className='forgot-password pt-1'>
                         <span style={{ color: 'black' }}>
                           Not registered{' '}
-                          <a style={{ color: 'black' }} href='/signup'>
-                            sign up?
+                          <a
+                            style={{ color: 'blue', fontSize: '14px' }}
+                            href='/signup'
+                          >
+                            Sign up?
                           </a>
                         </span>
                       </p>

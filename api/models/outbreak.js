@@ -119,6 +119,7 @@ var outbreakSchema = new Schema({
   },
   radius: {
     type: String,
+    unique: true,
   },
   lat: {
     type: String,
