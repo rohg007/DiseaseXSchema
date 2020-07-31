@@ -3,8 +3,9 @@ import Login from '../api/auth/loginHealthCenter.jsx';
 import Loading from './loading/loading.jsx';
 import { useHistory } from 'react-router-dom';
 import getLoggedInDetails from '../api/auth/getloggedInHealthCenterData.jsx';
+import im from '../images/hc1.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundImage: `url(${im})`,
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -101,21 +102,23 @@ function LoginPageHealthcenter() {
               body='true'
               inverse='true'
               style={{
-                marginLeft: '20%',
-                marginRight: '20%',
+                marginLeft: '30%',
+                marginRight: '30%',
                 marginTop: '5%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.30)',
+                backgroundColor: 'rgba(0,0,0,0.50)',
                 borderColor: '#333',
               }}
             >
               <div className='card-header'>
-                <h3>Health Center Sign In</h3>
+                <h3 style={{ color: 'white' }}>Health Center Sign In</h3>
               </div>
               <form onSubmit={handleFormSubmit}>
                 <div className='card-body'>
                   <div className='form-group'>
-                    <label htmlFor='email'>Email address</label>
+                    <label htmlFor='email' style={{ color: 'white' }}>
+                      Email address
+                    </label>
                     <input
                       type='email'
                       required
@@ -142,7 +145,9 @@ function LoginPageHealthcenter() {
                   </div>
 
                   <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password' style={{ color: 'white' }}>
+                      Password
+                    </label>
                     <input
                       type='password'
                       id='password'
@@ -177,19 +182,24 @@ function LoginPageHealthcenter() {
                     <div className='ml-auto'>
                       <button
                         type='submit'
-                        style={{ width: '150px' }}
+                        style={{ width: '165px' }}
                         className='btn btn-primary btn-block'
                       >
                         Login
                       </button>
                     </div>
-
                     <div className='ml-auto'>
                       <p className='forgot-password pt-1'>
-                        <span style={{ color: 'black' }}>
-                          Not registered{' '}
+                        <span>
                           <a
-                            style={{ color: 'blue', fontSize: '14px' }}
+                            className='pr-2'
+                            style={{ color: 'white', fontSize: '14px' }}
+                            href='/loginPageAdmin'
+                          >
+                            Login As Admin?
+                          </a>
+                          <a
+                            style={{ color: 'white', fontSize: '14px' }}
                             href='/signup'
                           >
                             Sign up?
@@ -203,7 +213,9 @@ function LoginPageHealthcenter() {
             </div>
           )}
         </div>
-      ) : null}
+      ) : (
+        history.push('/health_center')
+      )}
     </div>
   );
 }
