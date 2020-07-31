@@ -69,13 +69,37 @@ function AppNavBar() {
                   </div>
                 </div>
               ) : (
-                <div
-                  onClick={() => {
-                    history.push('/signup');
-                  }}
-                  className={`p-3 d-flex align-items-center justify-content-center  register`}
-                >
-                  <div> Register</div>
+                <div className='d-flex align-items-center justify-content-center flex-column'>
+                  <div
+                    onClick={() => {
+                      history.push('/signup');
+                    }}
+                    className={` register`}
+                  >
+                    <div className='text-center p-3'>
+                      {' '}
+                      Health Center Registeration
+                    </div>
+                    <hr className='m-0' />
+                  </div>
+                  <div
+                    onClick={() => {
+                      history.push('/loginPage');
+                    }}
+                    className={` register`}
+                  >
+                    <div className='text-center p-3'> Health Center Login</div>
+                    <hr className='m-0' />
+                  </div>
+                  <div
+                    onClick={() => {
+                      history.push('/loginPageAdmin');
+                    }}
+                    className={` register`}
+                  >
+                    <div className='text-center p-3'> Admin Login</div>
+                    <hr className='m-0' />
+                  </div>
                 </div>
               )}
             </div>
