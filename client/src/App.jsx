@@ -30,7 +30,7 @@ function App() {
       <Router>
         <AppNavbar />
         <Switch>
-          <Route path='/' exact component={Home} />
+          <Route path='/' exact component={LoginPageHealthCenter} />
           <Route path='/human_case' component={Human_Case} />
           <Route path='/animal_case' component={Animal_Case} />
           <Route path='/signup' component={SignUpPage} />
