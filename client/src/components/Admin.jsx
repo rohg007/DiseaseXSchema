@@ -105,6 +105,7 @@ function Admin() {
                 setSubmitting(false);
               });
           } else {
+            setOverAllError("Can't able to send sms!");
             setSubmitting(false);
           }
         })
@@ -152,7 +153,7 @@ function Admin() {
                     (animalCase) => animalCase._id !== Case._id
                   )
                 );
-
+                setOverAllError('');
                 setSubmitting(false);
               })
               .catch((error) => {
@@ -161,15 +162,16 @@ function Admin() {
                 setSubmitting(false);
               });
           } else {
+            setOverAllError("Can't able to send sms!");
             setSubmitting(false);
           }
         })
         .catch((error) => setOverAllError("Can't able to send sms!"));
     } catch (err) {
       setOverAllError(err);
+      setSubmitting(false);
     }
   }
-  console.log(localStorage);
   return (
     <div className='container-fluid p-0' style={sectionStyle}>
       {localStorage.user ? (
@@ -213,7 +215,12 @@ function Admin() {
                   >
                     {animalCases.length !== 0 ? (
                       <table
-                        style={{ width: '100%', borderRadius: '10px' }}
+                        style={{
+                          width: '100%',
+                          borderRadius: '10px',
+                          overflowX: 'hidden',
+                          overflowY: 'auto',
+                        }}
                         className='table table-hover table-condensed table-striped table-responsive table-bordered'
                       >
                         <thead>
@@ -221,7 +228,6 @@ function Admin() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Status</th>
                             <th>vaccine</th>
                             <th />
                           </tr>
@@ -234,7 +240,6 @@ function Admin() {
                                 <td>{animalCase.animal.owner.name}</td>
                                 <td>{animalCase.animal.owner.email}</td>
                                 <td>{animalCase.animal.owner.contact}</td>
-                                <td>{animalCase.animal.status}</td>
                                 <td>{animalCase.animal.vaccine.name}</td>
 
                                 <td>
@@ -246,7 +251,7 @@ function Admin() {
                                         handelAnimalCaseDetails(animalCase)
                                       }
                                     >
-                                      NOT SENT
+                                      Notify
                                     </div>
                                   </div>
                                 </td>
@@ -281,7 +286,12 @@ function Admin() {
                     {' '}
                     {humanCases.length !== 0 ? (
                       <table
-                        style={{ width: '100%', borderRadius: '10px' }}
+                        style={{
+                          width: '100%',
+                          borderRadius: '10px',
+                          overflowX: 'hidden',
+                          overflowY: 'auto',
+                        }}
                         className='table table-hover table-condensed table-striped table-responsive table-bordered'
                       >
                         <thead>
@@ -289,7 +299,6 @@ function Admin() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Status</th>
                             <th>vaccine</th>
                             <th />
                           </tr>
@@ -302,7 +311,6 @@ function Admin() {
                                 <td>{humanCase.patientName}</td>
                                 <td>{humanCase.patientEmail}</td>
                                 <td>{humanCase.patientContact}</td>
-                                <td>{humanCase.status}</td>
                                 <td>{humanCase.disease.vaccine[0].name}</td>
 
                                 <td>
@@ -314,7 +322,7 @@ function Admin() {
                                         handelHumanCaseDetails(humanCase)
                                       }
                                     >
-                                      NOT SENT
+                                      Notify
                                     </div>
                                   </div>
                                 </td>
@@ -326,7 +334,7 @@ function Admin() {
                     ) : (
                       <div className='d-flex align-items-center justify-content-center'>
                         <div className='p-3'>
-                          Oops! No more Active Human patients to notify!
+                          No more Active Human patients to notify!
                         </div>
                       </div>
                     )}
