@@ -13,6 +13,14 @@ var vaccineSchema = new Schema({
     type: Number,
     required: true,
   },
+  flag: {
+    type: Boolean,
+    required: true,
+  },
+  totalInCluster: {
+    type: Number,
+    required: true,
+  },
   forHuman: {
     type: String,
   },
