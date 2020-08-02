@@ -65,6 +65,9 @@ var diseaseSchema = new Schema({
     type: Number,
     required: true,
   },
+  diagnosis: {
+    type: [String],
+  },
   livestock: [livestockSchema],
   vaccine: [vaccineSchema],
 });
