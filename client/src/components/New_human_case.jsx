@@ -6,8 +6,9 @@ import Dropdown from './dropdown/Dropdown.jsx';
 import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter.jsx';
 import addDisease from '../api/diseases/postDisease.jsx';
 import addHumanCase from '../api/humanCases/posthumanCase.jsx';
+import im from '../images/hc2.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundImage: `url(${im})`,
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -276,7 +277,7 @@ function NewHumanCase() {
     }
   }
   return (
-    <div className='container-fluid p-2' style={sectionStyle}>
+    <div className='container-fluid p-3' style={sectionStyle}>
       {localStorage.user ? (
         <div>
           {loading ? (
@@ -294,10 +295,10 @@ function NewHumanCase() {
               body='true'
               inverse='true'
               style={{
-                marginLeft: '20%',
-                marginRight: '20%',
+                marginLeft: '8%',
+                marginRight: '30%',
                 justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.30)',
+                backgroundColor: 'rgba(0,0,0,0.40)',
                 borderColor: '#333',
               }}
             >
@@ -491,7 +492,7 @@ function NewHumanCase() {
                         </div>
                       ) : null}
                     </div>
-                    <div className='pb-3' style={{ width: '50%' }}>
+                    <div className='pb-3' style={{ width: '70%' }}>
                       <Dropdown
                         label='Status'
                         hasError={error.statusError}
@@ -671,13 +672,16 @@ function NewHumanCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a style={{ color: 'black' }} href='/human_case'>
-                        All Cases?{' '}
-                      </a>
-
-                      <a style={{ color: 'black' }} href='/new_animalcase'>
-                        Add Animal Case?
-                      </a>
+                      <span>
+                        <a style={{ color: 'black' }} href='/human_case'>
+                          All Cases?{' '}
+                        </a>
+                      </span>
+                      <span>
+                        <a style={{ color: 'black' }} href='/new_animalcase'>
+                          Add Animal Case?
+                        </a>
+                      </span>
                     </p>
                   </div>
                 </div>

@@ -7,7 +7,7 @@ import GetAllHealthCenters from '../api/healthCenters/getAllhealthCenter.jsx';
 import Loading from './loading/loading.jsx';
 
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundColor: '#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',

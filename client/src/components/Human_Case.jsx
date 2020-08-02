@@ -6,7 +6,7 @@ import GetAllHumanCases from '../api/humanCases/getAllhumanCase.jsx';
 import UpdateHumanCase from '../api/humanCases/updatehumanCase.jsx';
 import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter';
 import UpdateDisease from '../api/diseases/updateDisease';
-
+import './signup.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   Button,
@@ -21,7 +21,7 @@ import {
 import editImage from '../images/edit.png';
 
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundColor:'#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',

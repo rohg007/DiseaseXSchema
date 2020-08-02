@@ -8,7 +8,7 @@ import { Modal, ModalBody } from 'reactstrap';
 import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
 import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
 var sectionStyle = {
-  backgroundColor: '#f2e6cb',
+  backgroundColor: '#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',

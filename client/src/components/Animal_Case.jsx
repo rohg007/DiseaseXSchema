@@ -21,8 +21,9 @@ import {
 
 import editImage from '../images/edit.png';
 
+import im from '../images/hc2.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundColor: '#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
