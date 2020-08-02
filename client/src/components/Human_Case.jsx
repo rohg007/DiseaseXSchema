@@ -18,6 +18,7 @@ import {
 import editImage from '../images/edit.png';
 
 var sectionStyle = {
+  backgroundColor:'#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',

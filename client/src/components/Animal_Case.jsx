@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Loading from './loading/loading.jsx';
 import GetAllAnimalCases from '../api/animalCase/getAllAnimalCases.jsx';
 import UpdateAnimalCase from '../api/animalCase/updateAnimalCase.jsx';
+import Maps from './map.jsx';
+import 'semantic-ui-css/semantic.min.css';
 import UpdateHealthCenter from '../api/healthCenters/updatehealthCenter';
 import UpdateDisease from '../api/diseases/updateDisease';
 
@@ -19,7 +21,7 @@ import editImage from '../images/edit.png';
 
 import im from '../images/hc2.jpg';
 var sectionStyle = {
-  backgroundColor: '#FAEBD7',
+  backgroundColor: '#f1f9ec',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -295,6 +297,7 @@ function Animal_Case() {
           >
             Animal Cases
           </div>
+          <Maps list={animalCases} />
           {localStorage.user ? (
             <table className='table table-striped table-active'>
               <thead>
