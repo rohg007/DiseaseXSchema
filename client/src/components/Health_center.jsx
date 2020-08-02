@@ -128,7 +128,7 @@ class Health_center extends Component {
             }}
             className='d-flex align-items-center justify-content-center'
           >
-            <Loading />
+            <Loading loadingColor='#ff790e' />
           </div>
         ) : (
           <div className='p-3'>
@@ -148,7 +148,7 @@ class Health_center extends Component {
                 ''
               ) : (
                 <div className='container-fluid p-0'>
-                  <div className='row' style={{justifyContent:'center'}}>
+                  <div className='row' style={{ justifyContent: 'center' }}>
                     <div
                       style={{
                         height: '50%',
@@ -223,7 +223,7 @@ class Health_center extends Component {
                     className='btn-group'
                     role='group'
                     aria-label='First group'
-                    style={{ height: '2%', marginLeft: '37%', Right: '0' }}
+                    style={{ height: '2%', marginLeft: '35%', Right: '0' }}
                   >
                     {user.email === 'admin@gmail.com' ? (
                       <a
@@ -237,36 +237,35 @@ class Health_center extends Component {
                         <p style={{ textAlign: 'right' }}>➜</p>
                       </a>
                     ) : (
-                      <div>
-                        <a
-                          className='btn btn-large btn-dark zoom shadow'
-                          href='/new_humancase'
-                          style={{ marginRight: '0.5rem' }}
-                        >
-                          <h6>NEW HUMAN CASE</h6>
-                          <br></br>
-                          <p>
-                            Add details of new case for human registered in your
-                            health center
-                          </p>
-                          <p style={{ textAlign: 'right' }}>➜</p>
-                        </a>
-                        <a
-                          className='btn btn-large btn-dark zoom shadow'
-                          href='/new_animalcase'
-                          style={{ marginRight: '0.5rem' }}
-                        >
-                          <h6>NEW ANIMAL CASE</h6>
-                          <br></br>
-                          <p>
-                            Add details of new case for animal registered in
-                            your health center
-                          </p>
-                          <p style={{ textAlign: 'right' }}>➜</p>
-                        </a>
-                      </div>
+                      <a
+                        className='btn btn-large btn-dark zoom shadow'
+                        href='/new_humancase'
+                        style={{ marginRight: '0.5rem' }}
+                      >
+                        <h6>NEW HUMAN CASE</h6>
+                        <br></br>
+                        <p>
+                          Add details of new case for human registered in your
+                          health center
+                        </p>
+                        <p style={{ textAlign: 'right' }}>➜</p>
+                      </a>
                     )}
-
+                    {this.state.user.email === 'admin@gmail.com' ? null : (
+                      <a
+                        className='btn btn-large btn-dark zoom shadow'
+                        href='/new_animalcase'
+                        style={{ marginRight: '0.5rem' }}
+                      >
+                        <h6>NEW ANIMAL CASE</h6>
+                        <br></br>
+                        <p>
+                          Add details of new case for animal registered in your
+                          health center
+                        </p>
+                        <p style={{ textAlign: 'right' }}>➜</p>
+                      </a>
+                    )}
                     <a
                       style={{ marginRight: '0.5rem' }}
                       className='btn btn-large btn-dark zoom'
@@ -295,13 +294,14 @@ class Health_center extends Component {
                     </a>
                     {user.email === 'admin@gmail.com' ? (
                       <a className='btn btn-large btn-dark zoom' href='/admin'>
-                      <h6>NOTIFY ALL</h6>
-                      <br></br>
-                      <p>
-                        Notifies all the patients for at once for their respective vaccines
-                      </p>
-                      <p style={{ textAlign: 'right' }}>➜</p>
-                    </a>
+                        <h6>NOTIFY ALL</h6>
+                        <br></br>
+                        <p>
+                          Notifies all the patients for at once for their
+                          respective vaccines
+                        </p>
+                        <p style={{ textAlign: 'right' }}>➜</p>
+                      </a>
                     ) : null}
                   </div>
                 </div>
