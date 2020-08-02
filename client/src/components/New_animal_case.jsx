@@ -11,8 +11,9 @@ import addAnimalCase from '../api/animalCase/createAnimalCase.jsx';
 // Geocode.setLanguage('en');
 // Geocode.setRegion('in');
 // Geocode.enableDebug();
+import im from '../images/hc2.jpg';
 var sectionStyle = {
-  backgroundColor: '#e0cda6',
+  backgroundImage: `url(${im})`,
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -338,11 +339,11 @@ function NewAnimalCase() {
               body='true'
               inverse='true'
               style={{
-                marginLeft: '20%',
-                marginRight: '20%',
+                marginLeft: '10%',
+                marginRight: '30%',
                 justifyContent: 'center',
 
-                backgroundColor: 'rgba(0,0,0,0.30)',
+                backgroundColor: 'rgba(0,0,0,0.40)',
                 borderColor: '#333',
               }}
             >
@@ -746,13 +747,16 @@ function NewAnimalCase() {
 
                   <div className='ml-auto'>
                     <p className='forgot-password text-right'>
-                      <a style={{ color: 'black' }} href='/animal_case'>
+                      <span><a style={{ color: 'black' }} href='/animal_case'>
                         All Cases?{' '}
-                      </a>
-
+                      </a></span>
+                      
+                      <span>
                       <a style={{ color: 'black' }} href='/new_humancase'>
                         Add Human Case?
                       </a>
+
+                      </span>
                     </p>
                   </div>
                 </div>

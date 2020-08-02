@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import Loading from './loading/loading.jsx';
 import GetAllDiseases from '../api/diseases/getAllDiseases';
+import './signup.css';
 
+import im from '../images/functionality.jpeg';
 var sectionStyle = {
-  backgroundColor: '#f2e6cb',
   width: '100%',
   height: '100vh',
   overflowY: 'auto',
@@ -73,13 +74,15 @@ class Health_center extends Component {
                 ''
               ) : (
                 <div className='row'>
+                  
                   <div
                     style={{
                       height: '50%',
                       justifyContent: 'center',
                       paddingLeft: '5%',
                     }}
-                    className='col-sm-6'
+                    style={{ backgroundColor: 'white', margin: '2%' }}
+                    className='shadow-lg col-sm-6'
                   >
                     <Bar
                       data={{
@@ -123,41 +126,84 @@ class Health_center extends Component {
             </div>
             <div className='container-fluid p-0'>
               <div className='row p-4'>
-                <div
+              <div className="zoomm" style={{backgroundImage: `url(${im})`,backgroundSize:'35%', backgroundRepeat:'no-repeat' }}>
+              <h3 style={{color:'black', positionX :'50%', fontWeight :'5px' }}> FUNCTIONALITIES </h3>
+                  <div
                   className='btn-group'
                   role='group'
                   aria-label='First group'
-                  style={{ paddingLeft: '5%', height: '2%' }}
+                  style={{ height: '2%' ,marginLeft:'37%',Right:'0' }}
                 >
                   {user.email === 'admin@gmail.com' ? (
                     <a
-                      className='btn btn-large btn-dark'
+                      className='btn btn-block btn-dark'
                       href='/allhealthcenters'
-                    >
-                      HEALTH CENTERS
-                    </a>
+                      style={{ marginRight: '0.5rem' }}
+                      >
+                        <h6>NEW HUMAN CASE</h6>
+                        <br></br>
+                        <p>
+                          Add details of new case for human registered in your
+                          health center
+                        </p>
+                        <p style={{textAlign:'right'}}>➜</p>
+                      </a>
                   ) : (
                     <div>
                       <a
-                        className='btn btn-large btn-dark'
+                        className='btn btn-large btn-dark zoom shadow'
                         href='/new_humancase'
+                        style={{ marginRight: '0.5rem' }}
                       >
-                        NEW HUMAN CASE
+                        <h6>NEW HUMAN CASE</h6>
+                        <br></br>
+                        <p>
+                          Add details of new case for human registered in your
+                          health center
+                        </p>
+                        <p style={{textAlign:'right'}}>➜</p>
                       </a>
                       <a
-                        className='btn btn-large btn-dark'
+                        className='btn btn-large btn-dark zoom shadow'
                         href='/new_animalcase'
+                        style={{ marginRight: '0.5rem' }}
                       >
-                        NEW ANIMAL CASE
+                        <h6>NEW ANIMAL CASE</h6>
+                        <br></br>
+                        <p>
+                          Add details of new case for animal registered in your
+                          health center
+                        </p>
+                        <p style={{textAlign:'right'}}>➜</p>
+
                       </a>
                     </div>
                   )}
 
-                  <a className='btn btn-large btn-dark' href='/human_case'>
-                    HUMAN CASES
+                  <a
+                    style={{ marginRight: '0.5rem' }}
+                    className='btn btn-large btn-dark zoom'
+                    href='/human_case'
+                  >
+                        <h6>ALL HUMAN CASES</h6>
+                        <br></br>
+                        <p>
+                          Find list of all the human cases added and can update the status
+                        </p>
+                        <p style={{textAlign:'right'}}>➜</p>
                   </a>
-                  <a className='btn btn-large btn-dark' href='/animal_case'>
-                    ANIMAL CASES
+                  <a
+                    className='btn btn-large btn-dark zoom'
+                    href='/animal_case'
+                  >
+                    
+                    <h6>ALL ANIMAL CASES</h6>
+                        <br></br>
+                        <p>
+                          Find list of all the animal cases added and can update the status
+                        </p>
+                        <p style={{textAlign:'right'}}>➜</p>
+
                   </a>
                   {user.email === 'admin@gmail.com' ? (
                     <a className='btn btn-large btn-dark' href='/admin'>
@@ -166,53 +212,81 @@ class Health_center extends Component {
                   ) : null}
                 </div>
               </div>
+                
+              </div>
             </div>
+            <div
+                className='row'
+                style={{
+                  height: '3rem',
+                  color: 'white',
+                  backgroundColor: '#455a64',
+                  textAlign: 'center',
+                  marginBottom: '2rem',
+                }}
+              >
+                <h4 style={{
+                  textAlign:'center'
+                }}>DISEASES</h4>
+              </div>
+
             <div className='container-fluid p-0'>
-              <div className='row'>
+              <div className='row' >
                 {' '}
                 {this.state.diseases.map((dise) => {
                   return (
                     <div className='col-md-3 col-sm-6' key={dise._id}>
-                      <div style={{ paddingTop: '3%' }}>
-                        <Doughnut
-                          data={{
-                            labels: ['Infected', 'Recoverd', 'Deaths'],
-                            datasets: [
-                              {
-                                label: 'Rainfall',
-                                backgroundColor: [
-                                  'rgba(0, 0, 255, 0.7)',
-                                  'rgba(0, 255, 0, 0.7)',
-                                  'rgba(255, 0, 0, 0.7)',
-                                ],
-                                hoverBackgroundColor: ['blue', 'green', 'red'],
-                                data: [
-                                  dise.total_affected,
-                                  dise.total_recovered,
-                                  dise.total_deaths,
-                                ],
+                      <div
+                        className='shadow-lg card mb-5'
+                        style={{ marginTop: '5%' }}
+                      >
+                        <div className='card-header'>
+                          <h6>{dise.name}</h6>
+                        </div>
+                        <div className='card-body'>
+                          <Doughnut  
+                            data={{
+                              labels: ['Infected', 'Recoverd', 'Deaths'],
+                              datasets: [
+                                {
+                                  label: 'Rainfall',
+                                  backgroundColor: [
+                                    'rgba(0, 0, 255, 0.7)',
+                                    'rgba(0, 255, 0, 0.7)',
+                                    'rgba(255, 0, 0, 0.7)',
+                                  ],
+                                  hoverBackgroundColor: [
+                                    'blue',
+                                    'green',
+                                    'red',
+                                  ],
+                                  data: [
+                                    dise.total_affected,
+                                    dise.total_recovered,
+                                    dise.total_deaths,
+                                  ],
+                                },
+                              ],
+                            }}
+                            options={{
+                              title: {
+                                display: false,
+                                fontColor: 'black',
+                                fontSize: 15,
+                                position: 'top',
                               },
-                            ],
-                          }}
-                          options={{
-                            title: {
-                              display: true,
-                              text: dise.name,
-                              fontColor: 'black',
-                              fontSize: 15,
-                              position: 'top',
-                            },
-                            legend: {
-                              display: true,
-                              fontColor: 'black',
-                              fontSize: '2',
-                              position: 'right',
-                            },
-                            labels: {
-                              fontColor: 'black',
-                            },
-                          }}
-                        />{' '}
+                              legend: {
+                                display: true,
+                                fontColor: 'black',
+                                fontSize: '2',
+                                position: 'right',
+                              },
+                              labels: {
+                                fontColor: 'black',
+                              },
+                            }}
+                          />{' '}
+                        </div>
                       </div>
                     </div>
                   );
